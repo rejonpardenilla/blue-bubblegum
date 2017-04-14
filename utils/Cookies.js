@@ -7,9 +7,15 @@ function Cookies () {
   }
 
 
+  obj.setJSON = (key, value) => {
+    value = JSON.stringify(value)
+    obj.set(key, value)
+  }
+
+
   obj.get = key => {
     let cookies = obj.getAll()
-    return cookies[key]
+    return (cookies[key] === '') ? null : cookies[key]
   }
 
 
@@ -25,9 +31,14 @@ function Cookies () {
   }
 
 
-  obj.getAsJSON = (key) => {
+  obj.getJSON = key => {
     let string = obj.get(key)
     return JSON.parse(string)
+  }
+
+
+  obj.delete = key => {
+    document.cookie = key + '=;'
   }
 
   return obj

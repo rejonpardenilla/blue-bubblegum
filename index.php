@@ -7,6 +7,5 @@
 <body>
 
   <script src="utils/Cookies.js"></script>
-  <script src="js/index.js"></script>
 </body>
 </html>
