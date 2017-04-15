@@ -1,131 +1,73 @@
-(function() {
+const fnameField = document.getElementById('fname')
+const fnameError = document.getElementById('fname-error')
 
-  var config = {
-    apiKey: "AIzaSyAob5TVDejP5x2oK7-txdJsrZ-XX-2pLxY",
-    authDomain: "login-template-firebase.firebaseapp.com",
-    databaseURL: "https://login-template-firebase.firebaseio.com",
-    storageBucket: "login-template-firebase.appspot.com",
-    messagingSenderId: "682870522204"
-  };
+const lnameField = document.getElementById('lname')
+const lnameError = document.getElementById('lname-error')
 
-  firebase.initializeApp( config );
-  const auth = firebase.auth();
+const emailField = document.getElementById('email')
+const emailError = document.getElementById('email-error')
 
-  auth.onAuthStateChanged(function( user ) {
-    if ( user ) {
-      window.location.href = 'done.html';
-    }
-  });
+const passwordField = document.getElementById('password')
+const passwordError = document.getElementById('password-error')
 
-  const txtFName = document.getElementById('fname');
-  const txtLName = document.getElementById('lname');
-  const txtEmail = document.getElementById('email');
-  const txtPassword = document.getElementById('password');
-  const btnSignup = document.getElementById('signup-button');
+const signupButton = document.getElementById('signup-button')
 
-  btnSignup.addEventListener('click', function( event ) {
+signupButton.addEventListener('click', () => {
+  validate()
+})
 
-    const email = txtEmail.value;
-    const password = txtPassword.value;
-    const name = txtFName.value + " " + txtLName.value;
+passwordField.addEventListener('keyup', event => {
+  if (event.keyCode === 13) {
+    validate()
+  }
+})
 
-    auth
-      .createUserWithEmailAndPassword( email, password )
-      .then(function() {
 
-        auth.currentUser.updateProfile({
-          displayName: name
-        }).catch(function( error ) {
-          console.log( error.message );
-        });
+function validate () {
+  let v = Validator()
 
-        window.location.href = 'done.html';
 
-      }).catch(function( error ) {
-        console.log( error.message );
-      });
+  if (v.isEmpty(fnameField)) {
+    v.showErrorStyle(fnameField)
+    v.showErrorMessage(fnameError, 'el nombre no puede estar vacío')
+    return false
+  } else {
+    v.hideErrorStyle(fnameField)
+    v.hideErrorMessage(fnameError)
+  }
+  
+  if (v.isEmpty(lnameField)) {
+    v.showErrorStyle(lnameField)
+    v.showErrorMessage(lnameError, 'el apellido no puede estar vacío')
+    return false
+  } else {
+    v.hideErrorStyle(lnameField)
+    v.hideErrorMessage(lnameError)
+  }
 
-  });
+  if (v.isEmail(emailField)) {
+    v.hideErrorStyle(emailField)
+    v.hideErrorMessage(emailError)
+  } else {
+    v.showErrorStyle(emailField)
+    v.showErrorMessage(emailError, 'el email es inválido')
+    return false
+  }
 
-  // User getters:
-  // function getName() {
-  //   var user = auth.currentUser;
-  // 
-  //   if (user != null) {
-  //     return user.displayName;
-  //   } else {
-  //     return null;
-  //   }
-  // }
-  //
-  // function getEmail() {
-  //   var user = auth.currentUser;
-  //
-  //   if (user != null) {
-  //     return user.email;
-  //   } else {
-  //     return null;
-  //   }
-  // }
-  //
-  // function getPhotoUrl() {
-  //   var user = auth.currentUser;
-  //
-  //   if (user != null) {
-  //     return user.photoUrl;
-  //   } else {
-  //     return null;
-  //   }
-  // }
-  //
-  // function getUid() {
-  //   var user = auth.currentUser;
-  //
-  //   if (user != null) {
-  //     return user.uid;
-  //   } else {
-  //     return null;
-  //   }
-  // }
-  //
-  //
-  //
-  // //User setters:
-  //
-  // function setName(name) {
-  //   var user = auth.currentUser;
-  //
-  //   user.updateProfile({
-  //     displayName: name
-  //   }).then(function() {
-  //     // Update successful.
-  //   }, function(error) {
-  //     // An error happened.
-  //   });
-  // }
-  //
-  // /*
-  // function setEmail() {
-  //   var user = auth.currentUser;
-  //
-  //   if (user != null) {
-  //     return user.email;
-  //   } else {
-  //     return null;
-  //   }
-  // }
-  // */
-  //
-  // function setPhotoUrl(url) {
-  //   var user = auth.currentUser;
-  //
-  //   user.updateProfile({
-  //     photoUrl: url
-  //   }).then(function() {
-  //     // Update successful.
-  //   }, function(error) {
-  //     // An error happened.
-  //   });
-  // }
+  if (v.isEmpty(passwordField)) {
+    v.showErrorStyle(passwordField)
+    v.showErrorMessage(passwordError, 'la contraseña no puede estar vacía')
+    return false
+  } else {
+    v.hideErrorStyle(passwordField)
+    v.hideErrorMessage(passwordError)
+  }
 
-}());
+  // TODO: Send to php
+  console.log(`
+    name: ${fname.value + " " + lname.value},
+    email: ${emailField.value}, 
+    password: ${passwordField.value}    
+    `)
+  return true
+}

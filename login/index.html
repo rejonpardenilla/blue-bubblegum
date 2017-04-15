@@ -4,26 +4,32 @@
   <meta charset="utf-8">
   <title>Login</title>
 
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="login/css/login.css">
 
 </head><body>
 
   <div class="login-card">
 
     <h1>Iniciar sesión</h1>
-
+    
+    <span id="email-error"></span>
     <input type="email" name="email" id="email" placeholder="Email">
+    
+    <span id="password-error"></span>
     <input type="password" name="pass" id="password" placeholder="Password">
+    
+    <span></span>
     <input type="button" name="login" id="login-button" class="login login-submit" value="Iniciar sesión">
 
     <div class="login-help">
-      <a href="../signup">Registrarse</a> •
+      <a href="/signup">Registrarse</a> •
       <a href="#">Olvidé mi contraseña</a>
     </div>
 
   </div>
 
-  <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
-  <script src="js/login.js"></script>
+
+  <script src="utils/Validator.js"></script>
+  <script src="login/js/login.js"></script>
 
 </body></html>

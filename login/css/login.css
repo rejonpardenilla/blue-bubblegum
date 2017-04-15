@@ -112,3 +112,13 @@ body {
   text-align: center;
   font-size: 12px;
 }
+
+.error {
+  border-color: red !important;
+}
+
+span {
+  line-height: 1;
+  font-size: small;
+  color: red;
+}
