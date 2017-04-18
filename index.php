@@ -7,10 +7,8 @@
 <body>
 
   <script>
-    window.location.href = '/login'
+    window.location.href = 'shop'
   </script>
   
-  <script src="utils/Cookies.js"></script>
-  <script src="js/index.js"></script>
 </body>
 </html>

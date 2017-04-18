@@ -23,7 +23,7 @@
     </div>
 
     <div id="login-menu">
-      <a href="#">
+      <a href="login">
         login
       </a>
     </div>
