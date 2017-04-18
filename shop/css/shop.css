@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee+Shade');
 @import url('https://fonts.googleapis.com/css?family=Mukta+Vaani');
-
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 * {
   margin: 0;
@@ -114,7 +112,12 @@ section#content {
   max-width: 200px;
 }
 
+.sticker span {
+  margin-top: 10px;
+}
+
 .sticker .title {
+  float: left;
   font-size: 16px;
 }
 
