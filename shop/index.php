@@ -27,6 +27,13 @@
         login
       </a>
     </div>
+
+    <div id="cart">
+      <a href="#">
+        <img src="assets/cart.svg" alt="shoping cart">
+      </a>
+    </div>
+
   </header>
 
   <section id="content">
@@ -59,6 +66,20 @@
       <span class="title">Ninja dev set</span>
       <span class="price">$3.80</span>
     </div>
+
+    <div class="sticker">
+      <img src="https://ih1.redbubble.net/image.200308046.2646/st%2Csmall%2C215x235-pad%2C210x230%2Cf8f8f8.lite-1u8.jpg" alt="sticker">
+      <span class="title">Fresspool</span>
+      <span class="price">$3.17</span>
+    </div>
+
+    <div class="sticker">
+      <img src="https://ih0.redbubble.net/image.203427672.6751/st%2Csmall%2C215x235-pad%2C210x230%2Cf8f8f8.lite-1.jpg" alt="sticker">
+      <span class="title">Pulp fiction dance</span>
+      <span class="price">$3.59</span>
+    </div>
+
+
 
 
     

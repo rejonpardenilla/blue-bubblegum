@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Mukta+Vaani');
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +9,7 @@
 }
 
 body {
+  min-width: 1336px; /* Necessary evil */
   background-color: #E8EAF6;
   font-family: 'Mukta Vaani', sans-serif;
 }
@@ -18,6 +20,9 @@ a:visited {
   color: #303F9F;
   text-decoration: none;
 }
+
+
+
 
 /* NAVBAR STYLES */
 header {
@@ -31,9 +36,9 @@ header {
   box-shadow: 0 8px 6px -6px #999;
 }
 
+/* Navbar 1: Logo */
 #logo {
   float: left;
-  /*font-family: 'Bungee Shade', cursive;*/
   font-family: 'Pacifico', cursive;
   font-size: 40px;
   margin-left: 10px;
@@ -45,17 +50,8 @@ header {
   color: inherit;
 }
 
-#login-menu {
-  margin-top: 30px;
-  margin-right: 10px;
-  font-size: 20px;
-  float: right;
-}
 
-#login-menu a {
-  color: inherit;
-}
-
+/* Navbar 2: Categories */
 #categories-menu {
   float: left;
   margin-left: 100px;
@@ -83,6 +79,37 @@ header {
   color: inherit;
 }
 
+@media screen and (max-width: 1250px) { /* Temporary fix */
+  #categories-menu {
+    display: none;
+  }
+}
+
+
+/* Navbar 3: Cart*/
+#cart {
+  float: right;
+  width: 40px;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+
+/* Navbar 4: Login*/
+#login-menu {
+  margin-top: 30px;
+  margin-right: 10px;
+  font-size: 20px;
+  float: right;
+}
+
+#login-menu a {
+  color: inherit;
+}
+
+
 
 
 /* CONTENT STYLES */
@@ -102,6 +129,7 @@ section#content {
   padding: 10px;
   width: 240px;
   height: 240px;
+  cursor: pointer;
 }
 
 .sticker img {
@@ -126,8 +154,6 @@ section#content {
   font-weight: bold;
   float: right;
 }
-
-
 
 
 
