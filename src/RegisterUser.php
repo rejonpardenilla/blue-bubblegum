@@ -25,6 +25,8 @@ class RegisterUser {
 }
 
 function Main() {
+  $_POST = json_decode(file_get_contents('php://input'),true);
+
   $userName = $_POST[ 'name' ];
   $userEmail = $_POST[ 'email' ];
   $userPassword = $_POST[ 'password' ];

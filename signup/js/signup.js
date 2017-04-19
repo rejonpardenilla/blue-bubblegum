@@ -13,7 +13,17 @@ const passwordError = document.getElementById('password-error')
 const signupButton = document.getElementById('signup-button')
 
 signupButton.addEventListener('click', () => {
-  validate()
+  let correctdata = validate()
+
+  if(correctdata) {
+    let userName = fnameField.value + ' ' + lnameField.value
+    let userEmail = emailField.value
+    let userPassword = passwordField.value
+
+    let userData = { name: userName, email: userEmail, password: userPassword }
+
+    sendData( userData )
+  }
 })
 
 passwordField.addEventListener('keyup', event => {
@@ -35,7 +45,7 @@ function validate () {
     v.hideErrorStyle(fnameField)
     v.hideErrorMessage(fnameError)
   }
-  
+
   if (v.isEmpty(lnameField)) {
     v.showErrorStyle(lnameField)
     v.showErrorMessage(lnameError, 'el apellido no puede estar vacío')
@@ -66,8 +76,22 @@ function validate () {
   // TODO: Send to php
   console.log(`
     name: ${fname.value + " " + lname.value},
-    email: ${emailField.value}, 
-    password: ${passwordField.value}    
+    email: ${emailField.value},
+    password: ${passwordField.value}
     `)
   return true
+}
+
+function sendData( userData ) {
+
+  let xhttp = new XMLHttpRequest()
+  xhttp.onreadystatechange = () => {
+    if ( this.readyState == 4 && this.status == 200 ) {
+      console.log( xhttp.responseText )
+    }
+  }
+
+  xhttp.open( 'POST', '../src/RegisterUser.php' )
+  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+  xhttp.send( JSON.stringify( userData ) )
 }
