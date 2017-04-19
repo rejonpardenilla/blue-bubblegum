@@ -1,26 +1,29 @@
-function Validator () {
+let Validator = () => {
   let obj = {}
 
+  let getElement = id => document.getElementById(id)
+  let valueOf = id => document.getElementById(id).value
 
-  obj.isEmail = email => {
+
+  obj.isEmail = id => {
     let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    return regex.test(email.value)
+    return regex.test(valueOf(id))
   }
 
 
-  obj.isEmpty = field => (field.value === '')
+  obj.isEmpty = id => (valueOf(id) === '')
 
 
-  obj.showErrorStyle = field => (field.className = 'error')
+  obj.showErrorStyle = id => (getElement(id).className = 'error')
 
 
-  obj.hideErrorStyle = field => (field.className = '')
+  obj.hideErrorStyle = id => (getElement(id).className = '')
 
 
-  obj.showErrorMessage = (container, message) => (container.innerText = message)
+  obj.showErrorMessage = (id, message) => (getElement(id).innerText = message)
 
 
-  obj.hideErrorMessage = container => (container.innerText = '')
+  obj.hideErrorMessage = id => (getElement(id).innerText = '')
 
 
   return obj

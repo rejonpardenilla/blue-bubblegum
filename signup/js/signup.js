@@ -1,15 +1,7 @@
 const fnameField = document.getElementById('fname')
-const fnameError = document.getElementById('fname-error')
-
 const lnameField = document.getElementById('lname')
-const lnameError = document.getElementById('lname-error')
-
 const emailField = document.getElementById('email')
-const emailError = document.getElementById('email-error')
-
 const passwordField = document.getElementById('password')
-const passwordError = document.getElementById('password-error')
-
 const signupButton = document.getElementById('signup-button')
 
 signupButton.addEventListener('click', () => {
@@ -27,40 +19,40 @@ function validate () {
   let v = Validator()
 
 
-  if (v.isEmpty(fnameField)) {
-    v.showErrorStyle(fnameField)
-    v.showErrorMessage(fnameError, 'el nombre no puede estar vacío')
+  if (v.isEmpty('fname')) {
+    v.showErrorStyle('fname')
+    v.showErrorMessage('fname-error', 'el nombre no puede estar vacío')
     return false
   } else {
-    v.hideErrorStyle(fnameField)
-    v.hideErrorMessage(fnameError)
+    v.hideErrorStyle('fname')
+    v.hideErrorMessage('fname-error')
   }
   
-  if (v.isEmpty(lnameField)) {
-    v.showErrorStyle(lnameField)
-    v.showErrorMessage(lnameError, 'el apellido no puede estar vacío')
+  if (v.isEmpty('lname')) {
+    v.showErrorStyle('lname')
+    v.showErrorMessage('lname-error', 'el apellido no puede estar vacío')
     return false
   } else {
-    v.hideErrorStyle(lnameField)
-    v.hideErrorMessage(lnameError)
+    v.hideErrorStyle('lname')
+    v.hideErrorMessage('lname-error')
   }
 
-  if (v.isEmail(emailField)) {
-    v.hideErrorStyle(emailField)
-    v.hideErrorMessage(emailError)
+  if (v.isEmail('email')) {
+    v.hideErrorStyle('email')
+    v.hideErrorMessage('email-error')
   } else {
-    v.showErrorStyle(emailField)
-    v.showErrorMessage(emailError, 'el email es inválido')
+    v.showErrorStyle('email')
+    v.showErrorMessage('email-error', 'el email es inválido')
     return false
   }
 
-  if (v.isEmpty(passwordField)) {
-    v.showErrorStyle(passwordField)
-    v.showErrorMessage(passwordError, 'la contraseña no puede estar vacía')
+  if (v.isEmpty('password')) {
+    v.showErrorStyle('password')
+    v.showErrorMessage('password-error', 'la contraseña no puede estar vacía')
     return false
   } else {
-    v.hideErrorStyle(passwordField)
-    v.hideErrorMessage(passwordError)
+    v.hideErrorStyle('password')
+    v.hideErrorMessage('password-error')
   }
 
   // TODO: Send to php
