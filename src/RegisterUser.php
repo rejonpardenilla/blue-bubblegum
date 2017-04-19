@@ -16,10 +16,39 @@ class RegisterUser {
 
   public function register( $userData ) {
     $table = 'users';
-    $this->adminDB->insertar( $table, $userData );
+    //$this->adminDB->insertar( $table, $userData );
+    $repeatUser = $this->verifyUserNotRepeated( $userData );
 
-    $_SESSION[ 'name' ] = $userData[ 'name' ];
-    $_SESSION[ 'email' ] = $userData[ 'email' ];
+    if ( $repeatUser ) {
+      # code...
+    } else {
+      # code...
+      $this->adminDB->insertar( $table, $userData );
+      $_SESSION[ 'name' ] = $userData[ 'name' ];
+      $_SESSION[ 'email' ] = $userData[ 'email' ];
+    }
+
+
+
+  }
+
+  private function verifyUserNotRepeated( $userData ) {
+    $condition = "name = '" . $userData[ 'name' ] . "' OR email= '" .$userData[ 'email' ] . "'";
+
+    $response = $this->adminDB->obtener_elemento( 'users', $condition );
+    
+     $usersWithSameData = sizeof( $response );
+     $repeatUser = true;
+
+     if( $usersWithSameData > 0 ) {
+       $repeatUser = true;
+     } else {
+
+       $repeatUser = false;
+     }
+
+
+     return $repeatUser;
 
   }
 }

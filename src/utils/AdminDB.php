@@ -64,5 +64,13 @@
             $consulta = "INSERT INTO $nombre_tabla $cadena_atributos VALUES $cadena_valores";
             return $consulta;
         }
+
+        public function obtener_elemento( $nombre_tabla, $condicion ) {
+          $consulta = "SELECT * FROM $nombre_tabla WHERE $condicion";
+          $resultado = $this->conexion->query( $consulta );
+
+          $elemento = $resultado->fetchAll();
+          return $elemento;
+        }
 	}
 ?>

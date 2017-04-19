@@ -23,6 +23,7 @@ signupButton.addEventListener('click', () => {
     let userData = { name: userName, email: userEmail, password: userPassword }
 
     sendData( userData )
+    //window.location.href  = '../index.php'
   }
 })
 
@@ -85,13 +86,11 @@ function validate () {
 function sendData( userData ) {
 
   let xhttp = new XMLHttpRequest()
-  xhttp.onreadystatechange = () => {
-    if ( this.readyState == 4 && this.status == 200 ) {
-      console.log( xhttp.responseText )
-    }
-  }
 
   xhttp.open( 'POST', '../src/RegisterUser.php' )
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
   xhttp.send( JSON.stringify( userData ) )
+  xhttp.onload = () => {
+    console.log( xhttp.response )
+  }
 }
