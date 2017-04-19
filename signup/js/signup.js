@@ -22,7 +22,13 @@ signupButton.addEventListener('click', () => {
 
     let userData = { name: userName, email: userEmail, password: userPassword }
 
-    sendData( userData )
+    sendData( userData, ( data ) => {
+      
+      if ( data.complete ) {
+        window.location.href  = '../index.php'
+      }
+    }  )
+
     //window.location.href  = '../index.php'
   }
 })
@@ -83,7 +89,7 @@ function validate () {
   return true
 }
 
-function sendData( userData ) {
+function sendData( userData, callback ) {
 
   let xhttp = new XMLHttpRequest()
 
@@ -92,5 +98,7 @@ function sendData( userData ) {
   xhttp.send( JSON.stringify( userData ) )
   xhttp.onload = () => {
     console.log( xhttp.response )
+    callback( JSON.parse( xhttp.response ) )
+
   }
 }

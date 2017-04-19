@@ -21,11 +21,14 @@ class RegisterUser {
 
     if ( $repeatUser ) {
       # code...
+      print_r( json_encode( array( 'complete' => false  ) ) );
     } else {
       # code...
       $this->adminDB->insertar( $table, $userData );
       $_SESSION[ 'name' ] = $userData[ 'name' ];
       $_SESSION[ 'email' ] = $userData[ 'email' ];
+
+      print_r( json_encode( array( 'complete' => true  ) ) );
     }
 
 
@@ -36,7 +39,7 @@ class RegisterUser {
     $condition = "name = '" . $userData[ 'name' ] . "' OR email= '" .$userData[ 'email' ] . "'";
 
     $response = $this->adminDB->obtener_elemento( 'users', $condition );
-    
+
      $usersWithSameData = sizeof( $response );
      $repeatUser = true;
 

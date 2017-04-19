@@ -17,7 +17,6 @@
         private function realizar_conexion() {
             try {
                 $this->conexion = new PDO( self::BASE_DATOS, self::USUARIO, self::CONTRASENA );
-                echo 'Conectado a la base de datos.';
             } catch ( Exception $e ) {
                 die( 'Error: ' . $e->getMessage());
             }
@@ -25,7 +24,6 @@
 
         public function insertar( $nombre_tabla, $datos ) {
             $consulta = $this->obtener_consulta_insercion( $nombre_tabla, $datos );
-            echo $consulta;
             $this->conexion->query( $consulta );
         }
 
