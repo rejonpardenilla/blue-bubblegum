@@ -1,9 +1,5 @@
 const emailField = document.getElementById('email')
-const emailError = document.getElementById('email-error')
-
 const passwordField = document.getElementById('password')
-const passwordError = document.getElementById('password-error')
-
 const loginButton = document.getElementById('login-button')
 
 loginButton.addEventListener('click', () => {
@@ -20,22 +16,22 @@ passwordField.addEventListener('keyup', event => {
 function validate () {
   let v = Validator()
 
-  if (v.isEmail(emailField)) {
-    v.hideErrorStyle(emailField)
-    v.hideErrorMessage(emailError)
+  if (v.isEmail('email')) {
+    v.hideErrorStyle('email')
+    v.hideErrorMessage('email-error')
   } else {
-    v.showErrorStyle(emailField)
-    v.showErrorMessage(emailError, 'el email es inválido')
+    v.showErrorStyle('email')
+    v.showErrorMessage('email-error', 'el email es inválido')
     return false
   }
 
-  if (v.isEmpty(passwordField)) {
-    v.showErrorStyle(passwordField)
-    v.showErrorMessage(passwordError, 'la contraseña no puede estar vacía')
+  if (v.isEmpty('password')) {
+    v.showErrorStyle('password')
+    v.showErrorMessage('password-error', 'la contraseña no puede estar vacía')
     return false
   } else {
-    v.hideErrorStyle(passwordField)
-    v.hideErrorMessage(passwordError)
+    v.hideErrorStyle('password')
+    v.hideErrorMessage('password')
   }
 
   // TODO: Send to php
