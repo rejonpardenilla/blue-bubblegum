@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Blue Bubblegum</title>
-  <link rel="stylesheet" href="shop/css/shop.css">
+  <link rel="stylesheet" href="css/shop.css">
 </head>
 <body>
   <header>
@@ -12,7 +12,7 @@
         Blue Bubblegum
       </a>
     </div>
-  
+
     <div id="categories-menu">
       <ul>
         <li><a href="#">TECNOLOGIA</a></li>
@@ -23,14 +23,14 @@
     </div>
 
     <div id="login-menu">
-      <a href="login">
+      <a href="../login">
         login
       </a>
     </div>
 
     <div id="cart">
       <a href="#">
-        <img src="assets/cart.svg" alt="shoping cart">
+        <img src="../assets/cart.svg" alt="shoping cart">
       </a>
     </div>
 
@@ -42,7 +42,7 @@
       <span class="title">Bored Seal</span>
       <span class="price">$2.53</span>
     </div>
-    
+
     <div class="sticker">
       <img src="https://ih1.redbubble.net/image.353367608.9428/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.lite-1u2.jpg" alt="sticker">
       <span class="title">Smart Unicorn</span>
@@ -82,9 +82,9 @@
 
 
 
-    
 
-    
+
+
   </section>
 
   <footer>
