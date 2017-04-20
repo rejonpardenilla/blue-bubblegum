@@ -25,8 +25,9 @@ class RegisterUser {
     } else {
       # code...
       $this->adminDB->insertar( $table, $userData );
-      $_SESSION[ 'name' ] = $userData[ 'name' ];
       $_SESSION[ 'email' ] = $userData[ 'email' ];
+      $_SESSION[ 'password' ] = $userData[ 'password' ];
+      $_SESSION[ 'tipoUsuario' ] = $userData[ 'tipo' ];
 
       print_r( json_encode( array( 'complete' => true  ) ) );
     }
@@ -65,7 +66,8 @@ function Main() {
 
   $userData = array(  'name' => $userName ,
                       'email' => $userEmail,
-                      'password' => $userPassword );
+                      'password' => $userPassword,
+                      'tipo' => 'normal' );
 
   $registerUser = new RegisterUser();
   $registerUser->register( $userData );

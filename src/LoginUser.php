@@ -43,6 +43,7 @@ class LoginUser {
     if ($userFounded > 0) {
       # code...
       $userValid = true;
+      $_SESSION[ 'tipoUsuario' ] = $response[0]['tipo'];
     } else {
       # code...
       $userFounded = false;
