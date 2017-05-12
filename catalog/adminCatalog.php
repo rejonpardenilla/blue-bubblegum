@@ -1,5 +1,5 @@
 <?php
-	include 'admin_db.php';
+	include 'adminDB.php';
 
 	$admin_db = new AdminDB();
 	$request_type = $_SERVER['REQUEST_METHOD'];

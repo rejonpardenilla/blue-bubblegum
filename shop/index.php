@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Blue Bubblegum</title>
-  <link rel="stylesheet" href="shop/css/shop.css">
+  <link rel="stylesheet" href="css/shop.css">
 </head>
 <body>
   <header>
