@@ -1,27 +1,42 @@
 let StickerManager = () => {
   let obj = {}
 
-  let stickerToHtml = ({ title, price, imageUrl }) => {
-    let htmlSticker = 
-      `<div class="sticker">` +
-        `<img src="${imageUrl}">` +
-        `<span class="title">${title}</span>` +
-        `<span class="price">\$${price}</span>` +
-      `</div>`
+  obj.getAllStickers = () => {
+    let stickers = [
+      {
+        title: 'Bored Seal',
+        price: 2.53,
+        imageUrl: 'https://ih0.redbubble.net/image.357542102.4834/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.lite-1u2.jpg'
+      },
+      {
+        title: 'Smart Unicorn',
+        price: 3.80,
+        imageUrl: 'https://ih1.redbubble.net/image.353367608.9428/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.lite-1u2.jpg'
+      }
+    ]
 
-    return htmlSticker
+    return stickers
   }
 
-  let getAllStickers = () => {
 
+  obj.showStickers = (id, stickers) => {
+    document.getElementById(id).innerHTML = ''
+
+    stickers.forEach( x => {
+      let htmlSticker = 
+        `<div class="sticker">` +
+          `<img src="${x.imageUrl}">` +
+          `<span class="title">${x.title}</span>` +
+          `<span class="price">\$${x.price}</span>` +
+        `</div>`
+
+      document.getElementById(id).innerHTML += htmlSticker
+    })
   }
 
 
-  obj.getStickers = () => {
 
-  }
-
-  obj.addSticker = () => {
+  obj.addSticker = ({ title, price, category, imageUrl }) => {
 
   }
 
@@ -29,8 +44,8 @@ let StickerManager = () => {
 
   }
 
-  obj.filterByCategory = category => {
-
+  obj.filterByCategory = (category, stickers) => {
+    
   }
 
 

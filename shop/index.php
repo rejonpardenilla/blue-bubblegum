@@ -90,5 +90,8 @@
   <footer>
 
   </footer>
+
+  <script src="../utils/StickerManager.js"></script>
+  <script src="js/shop.js"></script>
 </body>
 </html>
