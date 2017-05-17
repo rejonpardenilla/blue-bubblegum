@@ -1,5 +1,7 @@
-let shopManager = StickerManager()
+let sm = StickerManager()
 
-let stickers = shopManager.getAllStickers()
+let stickers = sm.getAllStickers()
 
-shopManager.showStickers('content', stickers)
+sm.showStickers('content', stickers)
+
+sm.showStickers('content', sm.getStickersByCategory('technology'))

@@ -1,16 +1,30 @@
 let StickerManager = () => {
   let obj = {}
 
+
   obj.getAllStickers = () => {
+    let request = new XMLHttpRequest()
+    const URL = '../adminCatalog.php'
+
+    request.open('GET', URL)
+    
+    request.onload = () => {
+      // Send
+    }
+
+    request.send()
+
     let stickers = [
       {
         title: 'Bored Seal',
         price: 2.53,
+        category: 'other',
         imageUrl: 'https://ih0.redbubble.net/image.357542102.4834/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.lite-1u2.jpg'
       },
       {
         title: 'Smart Unicorn',
         price: 3.80,
+        category: 'technology',
         imageUrl: 'https://ih1.redbubble.net/image.353367608.9428/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.lite-1u2.jpg'
       }
     ]
@@ -44,9 +58,8 @@ let StickerManager = () => {
 
   }
 
-  obj.filterByCategory = (category, stickers) => {
-    
-  }
+  obj.getStickersByCategory = category => obj.getAllStickers().filter(x => x.category === category)
+
 
 
   return obj
