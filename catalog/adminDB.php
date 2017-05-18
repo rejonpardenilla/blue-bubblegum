@@ -53,6 +53,6 @@
         public function eliminar( $nombre_tabla, $ids ) {
             $consulta = $this->generador_consultas->obtener_consulta_eliminacion( $nombre_tabla, $ids );
             $resultado = $this->conexion->query( $consulta );
-    }
+        }
 	}
 ?>

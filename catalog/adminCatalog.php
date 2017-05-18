@@ -1,7 +1,7 @@
 <?php
-	include 'admin_db.php';
+	include 'adminDB.php';
 
-	$admin_db = new AdminDB();
+	$adminDB = new AdminDB();
 	$request_type = $_SERVER['REQUEST_METHOD'];
 
 	switch( $request_type ) {
@@ -16,7 +16,7 @@
 				'descripcion' => $description,
 				'categoria' => $category,
 				'precio' => $price);
-			$admin_db->insertar('productos', $data);
+			$adminDB->insertar('productos', $data);
 			break;
 
 		case 'DELETE':
@@ -24,7 +24,7 @@
 			$data = array(
 				'nombre' => $name
 				);
-			$admin_db->eliminar('productos', $data);
+			$adminDB->eliminar('productos', $data);
 	}
 
 ?>
