@@ -5,6 +5,7 @@ const passwordField = document.getElementById('password')
 const passwordError = document.getElementById('password-error')
 
 const loginButton = document.getElementById('login-button')
+const dataError = document.getElementById('data-error')
 
 loginButton.addEventListener('click', () => {
   let correctdata = validate()
@@ -19,6 +20,8 @@ loginButton.addEventListener('click', () => {
       if (data.complete) {
         window.location.href  = '../index.php'
 
+      } else {
+        dataError.innerHTML = 'Usuario y/o Contraseña Invalidos.'
       }
     } )
   }
