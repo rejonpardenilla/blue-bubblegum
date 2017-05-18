@@ -25,9 +25,9 @@ class RegisterUser {
     } else {
       # code...
       $this->adminDB->insertar( $table, $userData );
-      $_SESSION[ 'email' ] = $userData[ 'email' ];
-      $_SESSION[ 'password' ] = $userData[ 'password' ];
-      $_SESSION[ 'tipoUsuario' ] = $userData[ 'tipo' ];
+      $_SESSION[ 'BBL_email' ] = $userData[ 'email' ];
+      $_SESSION[ 'BBL_password' ] = $userData[ 'password' ];
+      $_SESSION[ 'BBl_tipoUsuario' ] = $userData[ 'tipo' ];
 
       print_r( json_encode( array( 'complete' => true  ) ) );
     }

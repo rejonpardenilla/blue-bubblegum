@@ -20,8 +20,8 @@ class LoginUser {
 
     if ($userValid) {
       # code...
-      $_SESSION[ 'email' ] = $userData[ 'email' ];
-      $_SESSION[ 'password' ] = $userData[ 'password' ];
+      $_SESSION[ 'BBL_email' ] = $userData[ 'email' ];
+      $_SESSION[ 'BBL_password' ] = $userData[ 'password' ];
 
       print_r( json_encode( array( 'complete' => true  ) ) );
     } else {
