@@ -1,5 +1,6 @@
 //Option buttons
 const addProductButton = document.getElementById('addProductButton')
+const searchProductButton = document.getElementById('searchProductButton')
 const editProductButton = document.getElementById('editProductButton')
 const removeProductButton = document.getElementById('removeProductButton')
 
@@ -7,6 +8,7 @@ const formPanel = document.getElementById('formPanel')
 var currentPanel = 'nothing'
 
 addProductButton.addEventListener('click', generateAddProductPanel)
+searchProductButton.addEventListener('click', generateSearchProductPanel)
 editProductButton.addEventListener('click', generateEditProductPanel)
 removeProductButton.addEventListener('click', generateRemoveProductPanel)
 
@@ -31,6 +33,7 @@ function generateAddProductPanel () {
 		formPanel.appendChild(panelTemplate)
 		currentPanel = 'addProduct'
 	}
+
 }
 
 function generateSearchProductPanel () {
