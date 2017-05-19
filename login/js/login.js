@@ -1,9 +1,26 @@
 const emailField = document.getElementById('email')
 const passwordField = document.getElementById('password')
 const loginButton = document.getElementById('login-button')
+const dataError = document.getElementById('data-error')
 
 loginButton.addEventListener('click', () => {
-  validate()
+  let correctdata = validate()
+
+  if (correctdata) {
+    let userEmail = emailField.value
+    let userPassword = passwordField.value
+
+    let userData = { email: userEmail, password: userPassword }
+
+    sendData( userData, ( data ) => {
+      if (data.complete) {
+        window.location.href  = '../index.php'
+
+      } else {
+        dataError.innerHTML = 'Usuario y/o Contraseña Invalidos.'
+      }
+    } )
+  }
 })
 
 passwordField.addEventListener('keyup', event => {
@@ -37,4 +54,17 @@ function validate () {
   // TODO: Send to php
   console.log(`email: ${emailField.value}, password: ${passwordField.value}`)
   return true
+}
+
+function sendData( userData, callback ) {
+  let xhttp = new XMLHttpRequest()
+
+  xhttp.open( 'POST', '../src/LoginUser.php' )
+  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+  xhttp.send( JSON.stringify( userData ) )
+  xhttp.onload = () => {
+    console.log( xhttp.response )
+    callback( JSON.parse( xhttp.response ) )
+
+  }
 }
