@@ -24,13 +24,6 @@
       </ul>
     </div>
 
-<<<<<<< HEAD
-    <div id="login-menu">
-      <a href="../login">
-        login
-      </a>
-    </div>
-=======
     <?php if( isset( $_SESSION[ 'BBL_email' ] ) ) { ?>
       <div id="info-user">
         <p>
@@ -45,7 +38,7 @@
         </a>
       </div>
     <?php } ?>
->>>>>>> registerUser
+
 
     <div id="cart">
       <a href="#">
