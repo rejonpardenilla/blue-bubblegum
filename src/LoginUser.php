@@ -3,6 +3,7 @@
 /**
  *
  */
+
 include ( 'utils/AdminDB.php' );
 
 class LoginUser {
@@ -12,6 +13,7 @@ class LoginUser {
   function __construct() {
     # code...
     $this->adminDB = new AdminDB();
+    session_start();
   }
 
   public function login( $userData ) {
@@ -22,11 +24,12 @@ class LoginUser {
       # code...
       $_SESSION[ 'BBL_email' ] = $userData[ 'email' ];
       $_SESSION[ 'BBL_password' ] = $userData[ 'password' ];
+      $_SESSION[ 'BBl_tipoUsuario' ] = $userData[ 'tipo' ];
 
-      print_r( json_encode( array( 'complete' => true  ) ) );
+      print_r( json_encode( array( 'complete' => true, 'user' => $_SESSION['BBL_email'] ) ) );
     } else {
 
-      print_r( json_encode( array( 'complete' => false  ) ) );
+      print_r( json_encode( array( 'complete' => false ) ) );
 
     }
 
