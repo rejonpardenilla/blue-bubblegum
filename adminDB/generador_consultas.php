@@ -58,31 +58,31 @@
             return $consulta;
         }
 
-        public function obtener_consulta_especifica( $nombre_tabla, $ids ) {
-            $cadena_id = $this->obtener_cadena_id( $ids, count( $ids ) );
+        public function obtener_consulta_categoria( $nombre_tabla, $categorias ) {
+            $cadena_cat = $this->obtener_cadena_categoria( $categorias, count( $categorias ) );
 
-            $consulta = "SELECT * FROM $nombre_tabla WHERE $cadena_id";
+            $consulta = "SELECT * FROM $nombre_tabla WHERE $cadena_cat";
 
             return $consulta;
         }
 
-        private function obtener_cadena_id( $datos, $num_ids ) {
-            $cadena_id = '';
+        private function obtener_cadena_categoria( $datos, $num_categorias ) {
+            $cadena_cat = '';
             $contador = 0;
             foreach ( $datos as $atributo=>$valor ) {
-                if( $contador < $num_ids ) {
-                if( $cadena_id == '' ) {
-                    $cadena_id = "$atributo = '$valor'";
-                } else {
-                    $cadena_id = "$cadena_id AND $atributo = '$valor'";
-                } //if
-                    $contador++;
+                if( $contador < $num_categorias ) {
+                    if( $cadena_cat == '' ) {
+                        $cadena_cat = "$atributo = '$valor'";
+                    } else {
+                        $cadena_cat = "$cadena_cat AND $atributo = '$valor'";
+                    } //if
+                        $contador++;
                 } else {
                     break;
                 } //if
             } //foreach
             
-            return $cadena_id;
+            return $cadena_cat;
         }
     }
 ?>
