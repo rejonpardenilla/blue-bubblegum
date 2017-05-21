@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Blue Bubblegum</title>
-  <!-- PRODUCTION 
   <link rel="stylesheet" href="css/shop.css">
-  -->
-  <link rel="stylesheet" href="shop/css/shop.css">
 </head>
 <body>
   <header>
@@ -94,11 +91,9 @@
 
   </footer>
 
-  <script src="utils/StickerManager.js"></script>
-  <script src="shop/js/shop.js"></script>
-  <!-- PRODUCTION
+
   <script src="../utils/StickerManager.js"></script>
+  <script src="../utils/ShoppingCart.js"></script>
   <script src="js/shop.js"></script>
-   -->
 </body>
 </html>
