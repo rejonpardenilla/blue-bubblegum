@@ -21,7 +21,6 @@
         private function realizar_conexion() {
             try {
                 $this->conexion = new PDO( self::BASE_DATOS, self::USUARIO, self::CONTRASENA );
-                echo 'Conectado a la base de datos.';
             } catch ( Exception $e ) {
                 die( 'Error: ' . $e->getMessage());
             }
@@ -33,11 +32,11 @@
             $this->conexion->query( $consulta );
         }
 
-        public function obtener_informacion( $nombre_tabla, $ids ) {
-            if( $ids == null ) {
+        public function obtener_informacion( $nombre_tabla, $id ) {
+            if( $id == null ) {
                 $consulta = $this->generador_consultas->obtener_consulta_lista( $nombre_tabla );
             } else {
-                $consulta = $this->generador_consultas->obtener_consulta_especifica( $nombre_tabla, $ids );
+                $consulta = $this->generador_consultas->obtener_consulta_especifica( $nombre_tabla, $id );
             }
                 $resultado = $this->conexion->query( $consulta );
                 $datos_obtenidos = $resultado->fetchAll();

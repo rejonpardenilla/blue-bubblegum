@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Blue Bubblegum</title>
-  <link rel="stylesheet" href="css/shop.css">
+  <link rel="stylesheet" href="css/shop.css" type="text/css">
 </head>
 <body>
   <header>
@@ -30,7 +30,7 @@
 
     <div id="cart">
       <a href="#">
-        <img src="assets/cart.svg" alt="shoping cart">
+        <img src="../assets/cart.svg" alt="shoping cart">
       </a>
     </div>
 

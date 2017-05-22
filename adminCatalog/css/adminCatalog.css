@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta+Vaani');
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+body {
+  min-width: 1336px; /* Necessary evil */
+  background-color: #E8EAF6;
+  font-family: 'Mukta Vaani', sans-serif;
+}
+
+a,
+a:hover,
+a:visited {
+  color: #303F9F;
+  text-decoration: none;
+}
+
+
+
+
+/* NAVBAR STYLES */
+header {
+  height: 80px;
+  width: 100%;
+  background-color: #3F51B5;
+  color: #E8EAF6;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: fixed;
+  box-shadow: 0 8px 6px -6px #999;
+}
+
+/* Navbar 1: Logo */
+#logo {
+  float: left;
+  font-family: 'Pacifico', cursive;
+  font-size: 40px;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+#logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* Navbar 2: Categories */
+#categories-menu {
+  float: left;
+  margin-left: 100px;
+}
+
+#categories-menu li {
+  display: inline;
+  list-style-type: none;
+  float: left;
+  font-size: 28px;
+  margin: 20px; 
+  margin-top: 26px;
+  margin-bottom: 26px;
+}
+
+#categories-menu li:hover {
+  color: white;
+  margin-top: 22px;
+  transform: margin-top;
+  transition: 0.1s;
+  transition-timing-function: ease-in-out;
+}
+
+#categories-menu a {
+  color: inherit;
+}
+
+@media screen and (max-width: 1250px) { /* Temporary fix */
+  #categories-menu {
+    display: none;
+  }
+}
+
+
+/* Navbar 4: Login*/
+#login-menu {
+  margin-top: 30px;
+  margin-right: 10px;
+  font-size: 20px;
+  float: right;
+}
+
+#login-menu a {
+  color: inherit;
+}
+
+
+
+
+/* CONTENT STYLES */
+section#content {
+  width: 100%;
+  float: left;
+  padding-top: 100px;
+  padding-right: 100px;
+  padding-left: 100px;
+}
+
+.sticker {
+  background-color: white;
+  color: #7986CB;
+  float: left;
+  margin: 20px;
+  padding: 10px;
+  width: 240px;
+  height: 240px;
+}
+
+.sticker img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  height: 200px;
+  max-width: 200px;
+}
+
+.sticker span {
+  margin-top: 10px;
+}
+
+.sticker .title {
+  float: left;
+  font-size: 16px;
+}
+
+.sticker .price {
+  color: #3F51B5;
+  font-weight: bold;
+  float: right;
+}
+
+
+
+
+/* BOTTOM OF THE PAGE */
+footer {
+  height: 160px;
+  width: 100%;
+  margin-top: 40px;
+  background-color: #212121;
+  float: left;
+}
