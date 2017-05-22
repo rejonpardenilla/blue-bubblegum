@@ -171,3 +171,28 @@ footer {
   background-color: #212121;
   float: left;
 }
+
+footer #comments {
+  width: 100%;
+  padding: 120px;
+  padding-top: 12px;
+  padding-bottom: 0;
+  color: #E8EAF6;
+}
+
+footer textarea {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 12px;
+}
+
+footer a,
+footer a:hover,
+footer a:visited {
+  float: left;
+  color: #E8EAF6;
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  border: 2px solid #E8EAF6;
+}

@@ -88,7 +88,11 @@
   </section>
 
   <footer>
-
+    <div id="comments">
+      <label>¿Comentarios?</label><br>
+      <textarea id="comment"></textarea><br>
+      <a href="#">Enviar</a>
+    </div>
   </footer>
 
 
