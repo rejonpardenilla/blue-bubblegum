@@ -96,6 +96,11 @@ header {
   margin-right: 20px;
 }
 
+#cart span {
+  color: #E8EAF6;
+  font-size: 36px;
+}
+
 
 /* Navbar 4: Login*/
 #login-menu {
