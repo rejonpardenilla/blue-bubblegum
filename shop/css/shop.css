@@ -184,10 +184,15 @@ section#content {
   font-size: 16px;
 }
 
-.sticker .price {
+.sticker .price,
+.add-to-cart {
   color: #3F51B5;
   font-weight: bold;
   float: right;
+}
+
+.add-to-cart {
+  margin-right: 12px;
 }
 
 
