@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
         Blue Bubblegum
       </a>
     </div>
-  
+
     <div id="categories-menu">
       <ul>
         <li><a href="#">TECNOLOGIA</a></li>
@@ -24,11 +26,21 @@
       </ul>
     </div>
 
-    <div id="login-menu">
-      <a href="../login">
-        login
-      </a>
-    </div>
+    <?php if( isset( $_SESSION[ 'BBL_email' ] ) ) { ?>
+      <div id="info-user">
+        <p>
+          <?php echo $_SESSION[ 'BBL_email' ]; ?>
+        </p>
+        <a href="../src/LogOut.php">Cerrar Sesión</a>
+      </div>
+    <?php } else { ?>
+      <div id="login-menu">
+        <a href="../login">
+          login
+        </a>
+      </div>
+    <?php } ?>
+
 
     <div id="cart">
       <a href="#">
@@ -84,9 +96,9 @@
 
 
 
-    
 
-    
+
+
   </section>
 
   <footer>

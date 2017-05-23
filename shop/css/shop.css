@@ -62,7 +62,7 @@ header {
   list-style-type: none;
   float: left;
   font-size: 28px;
-  margin: 20px; 
+  margin: 20px;
   margin-top: 26px;
   margin-bottom: 26px;
 }
@@ -98,11 +98,24 @@ header {
 
 
 /* Navbar 4: Login*/
-#login-menu {
+#login-menu, #info-user {
   margin-top: 30px;
   margin-right: 10px;
   font-size: 20px;
   float: right;
+}
+
+#info-user {
+  font-size: 10px;
+}
+
+#info-user p {
+  display: block;
+}
+
+#info-user a {
+  margin-left: 30px;
+  color: #ddeaf6;
 }
 
 #login-menu a {
