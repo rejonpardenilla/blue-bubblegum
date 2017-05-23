@@ -16,7 +16,7 @@ class RegisterUser {
 
   public function register( $userData ) {
     $table = 'users';
-    //$this->adminDB->insertar( $table, $userData );
+
     $repeatUser = $this->verifyUserNotRepeated( $userData );
 
     if ( $repeatUser ) {
@@ -40,7 +40,7 @@ class RegisterUser {
     $condition = "name = '" . $userData[ 'name' ] . "' OR email= '" .$userData[ 'email' ] . "'";
 
     $response = $this->adminDB->obtener_elemento( 'users', $condition );
-
+    //print_r($response);
      $usersWithSameData = sizeof( $response );
      $repeatUser = true;
 

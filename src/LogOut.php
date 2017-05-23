@@ -14,7 +14,7 @@
 <body>
 
   <script>
-    window.location.href = '../shop'
+    window.location.href = '../index.php'
   </script>
 
 </body>

@@ -24,7 +24,7 @@ class LoginUser {
       # code...
       $_SESSION[ 'BBL_email' ] = $userData[ 'email' ];
       $_SESSION[ 'BBL_password' ] = $userData[ 'password' ];
-      $_SESSION[ 'BBl_tipoUsuario' ] = $userData[ 'tipo' ];
+      //$_SESSION[ 'BBl_tipoUsuario' ] = $userData[ 'tipo' ];
 
       print_r( json_encode( array( 'complete' => true, 'user' => $_SESSION['BBL_email'] ) ) );
     } else {
@@ -46,7 +46,7 @@ class LoginUser {
     if ($userFounded > 0) {
       # code...
       $userValid = true;
-      $_SESSION[ 'tipoUsuario' ] = $response[0]['tipo'];
+      $_SESSION[ 'BBl_tipoUsuario' ] = $response[0]['tipo'];
     } else {
       # code...
       $userFounded = false;

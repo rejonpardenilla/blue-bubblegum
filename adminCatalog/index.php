@@ -12,7 +12,7 @@
         Blue Bubblegum
       </a>
     </div>
-  
+
     <div id="categories-menu">
       <ul>
         <li><a id="technology" href="#">TECNOLOGIA</a></li>
@@ -23,9 +23,7 @@
     </div>
 
     <div id="login-menu">
-      <a href="login">
-        Login
-      </a>
+      <a href="../src/LogOut.php">Cerrar Sesión</a>
     </div>
 
     <div id="add">
@@ -39,7 +37,7 @@
     </div>
 
   <section id="content">
-    
+
   </section>
 
    <footer>

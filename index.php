@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
+<?php
+  session_start();
 
-  <script>
-    window.location.href = 'shop'
-  </script>
-  
-</body>
-</html>
+
+  if ( $_SESSION['BBl_tipoUsuario'] == 'admin' ){
+    # code...
+    echo "<script>window.location.href = 'adminCatalog'</script>";
+  } else {
+
+    echo "<script>window.location.href = 'shop'</script>";
+  }
+
+ ?>

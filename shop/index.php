@@ -1,4 +1,8 @@
-<?php session_start() ?>
+<?php
+
+session_start();
+//print_r($_SESSION);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +60,7 @@
       <span class="title">Bored Seal</span>
       <span class="price">$2.53</span>
     </div>
-    
+
     <div class="sticker" id="1">
       <img src="https://ih1.redbubble.net/image.353367608.9428/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.lite-1u2.jpg" alt="sticker">
       <span class="title">Smart Unicorn</span>
