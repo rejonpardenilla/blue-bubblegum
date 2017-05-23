@@ -44,9 +44,10 @@
             print_r ( json_encode( $datos_obtenidos ) );
         }
 
-        public function modificar( $nombre_tabla, $datos ) {
-            $consulta = $this->generador_consultas->obtener_consulta_modificacion( $nombre_tabla, $datos );
-            $this->conexion->query( $consulta );
+        public function modificar( $nombre_tabla, $datos, $num_ids) {
+            $consulta = $this->generador_consultas->obtener_consulta_modificacion( $nombre_tabla, $datos, $num_ids );
+            $resultado = $this->conexion->query( $consulta );
+            echo $consulta;
         }
 
         public function eliminar( $nombre_tabla, $ids ) {

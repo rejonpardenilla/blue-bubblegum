@@ -44,32 +44,55 @@
 						break;
 				}
 			} else {
-				$title = [
-					'title' => $_GET['title']
+				$id = [
+					'id' => $_GET['id']
 				];
-				$product = $adminDB->obtener_informacion('products', $title);
+				$product = $adminDB->obtener_informacion('products', $id);
 			}
 			break;
 
 		case 'POST':
-			$title = $_POST['title'];
-			$description = $_POST['description'];
-			$category = $_POST['category'];
-			$price = $_POST['price'];
-			$data = array(
-				'title' => $title,
-				'description' => $description,
-				'category' => $category,
-				'price' => $price);
-			$adminDB->insertar('products', $data);
-			break;
+			$_POST = json_decode(file_get_contents('php://input'),true);
+			if ($_POST['tipo'] == 'insertar'){
+				$title = $_POST['title'];
+				$description = $_POST['description'];
+				$category = $_POST['category'];
+				$price = $_POST['price'];
+				$units = $_POST['units'];
+				$imageUrl = $_POST['imageUrl'];
+				$data = [
+					'title' => $title,
+					'description' => $description,
+					'category' => $category,
+					'price' => $price,
+					'imageUrl' => $imageUrl,
+					'units' => $units
+				];
+				$adminDB->insertar('products', $data);
 
-		case 'DELETE':
-			$title = $_POST['title'];
-			$data = array(
-				'title' => $title
-				);
-			$adminDB->eliminar('products', $data);
+			} else if ($_POST['tipo'] == 'modificar'){
+				$title = $_POST['title'];
+				$description = $_POST['description'];
+				$category = $_POST['category'];
+				$price = $_POST['price'];
+				$units = $_POST['units'];
+				$id = $_POST['id'];
+				$data = [
+					'title' => $title,
+					'description' => $description,
+					'category' => $category,
+					'price' => $price,
+					'units' => $units,
+					'id' => $id
+				];
+				$adminDB->modificar('products', $data, 5);
+			} else if ($_POST['tipo'] == 'eliminar'){
+				$id = $_POST['id'];
+				$data = [
+					'id' => $id
+				];
+				$adminDB->eliminar('products', $data);
+			}
 			break;
 	}
 

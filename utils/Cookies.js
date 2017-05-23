@@ -1,46 +1,63 @@
-function Cookies () {
-  let obj = {}
 
+if (document.cookie && document.cookie != "") {
+  process_cookie()
+}
 
-  obj.set = (key, value) => {
-    document.cookie = key + "=" + value
+const buyButton = document.getElementById("buy")
+buyButton.addEventListener("click", function () {
+  var keys = Object.keys(localStorage);
+  for (i in keys){
+    var sticker = JSON.parse(localStorage.getItem(keys[i]));
+    var id = sticker.id
   }
+  addToCart(id)
+})
 
+function addToCart(id){
+  createCookie('id', id, 3)
+  console.log(getCookie())
+}
 
-  obj.setJSON = (key, value) => {
-    value = JSON.stringify(value)
-    obj.set(key, value)
-  }
-
-
-  obj.get = key => {
-    let cookies = obj.getAll()
-    return (cookies[key] === '') ? null : cookies[key]
-  }
-
-
-  obj.getAll = () => {
-    var cookies = []
-
-    for (let cookie of document.cookie.split('; ')) {
-      let [name, value] = cookie.split('=')
-      cookies[name] = decodeURIComponent(value)
+function getCookie() {
+  var key, val, res;
+  //get all cookie
+  var oldCookie = document.cookie.split(';');
+  for (var i = 0; i < oldCookie.length; i++) {
+    key = oldCookie[i].substr(0, oldCookie[i].indexOf("="));
+    val = oldCookie[i].substr(oldCookie[i].indexOf("=") + 1);
+    key = key.replace(/^\s+|\s+$/g, "");
+    //find "user_cookie"
+    if (key == "prod") {
+      res = val;
     }
+  }
+  if (res == undefined) {
+    return null;
+  } else {
+    res = JSON.parse(res);
+    return res;
+  }
+}
 
-    return cookies
+function process_cookie() {
+  var whole_cookie = getCookie();
+  if (whole_cookie != null) {
+    item_number = whole_cookie;
+    console.log(item_number);
   }
 
+}
 
-  obj.getJSON = key => {
-    let string = obj.get(key)
-    return JSON.parse(string)
-  }
+function kill_cookies(){
+    createCookie("prod", "", -1);
+}
 
-
-  obj.delete = key => {
-    document.cookie = key + '=;'
-  }
-
-  return obj
-
+function createCookie(name, value, days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
 }
