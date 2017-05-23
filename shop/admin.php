@@ -1,13 +1,9 @@
-<?php session_start() ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Blue Bubblegum</title>
-
-  <link rel="stylesheet" href="css/shop.css" type="text/css">
-
+  <link rel="stylesheet" href="css/shop.css">
 </head>
 <body>
   <header>
@@ -16,7 +12,7 @@
         Blue Bubblegum
       </a>
     </div>
-
+  
     <div id="categories-menu">
       <ul>
         <li><a href="#">TECNOLOGIA</a></li>
@@ -26,35 +22,19 @@
       </ul>
     </div>
 
-    <?php if( isset( $_SESSION[ 'BBL_email' ] ) ) { ?>
-      <div id="info-user">
-        <p>
-          <?php echo $_SESSION[ 'BBL_email' ]; ?>
-        </p>
-        <a href="../src/LogOut.php">Cerrar Sesión</a>
-      </div>
-    <?php } else { ?>
-      <div id="login-menu">
-        <a href="../login">
-          login
-        </a>
-      </div>
-    <?php } ?>
-
+    <div id="login-menu">
+      <a href="../login">
+        login
+      </a>
+    </div>
 
     <div id="cart">
       <a href="#">
-        <img src="../assets/cart.svg" alt="shoping cart">
+        <span>+</span>
       </a>
     </div>
 
   </header>
-
-  <section id="search-bar">
-    <div id="search">
-      <input type="text" placeholder="Buscar">
-    </div>
-  </section>
 
   <section id="content">
     <div class="sticker" id="0">
@@ -102,22 +82,25 @@
 
 
 
+    
 
-
-
+    
   </section>
 
   <footer>
-    <div id="comments">
-      <label>¿Comentarios?</label><br>
-      <textarea id="comment"></textarea><br>
-      <a href="#">Enviar</a>
-    </div>
+    
   </footer>
 
 
   <script src="../utils/StickerManager.js"></script>
   <script src="../utils/ShoppingCart.js"></script>
-  <script src="js/shop.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    document.getElementById('cart').addEventListener('click', event => {
+      window
+        .open("", "", "width=650,height=650")
+        .location.href = 'add-sticker.php'
+    })
+  </script>
 </body>
 </html>
