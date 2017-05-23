@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const logoButton = document.getElementById('logo')
 logoButton.addEventListener('click', function () {
 	listStickers('all')
