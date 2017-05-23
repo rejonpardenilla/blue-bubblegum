@@ -39,7 +39,7 @@
             } //foreach    
             $cadena_id = $this->obtener_cadena_id( $datos, $num_ids );
 
-            $consulta = "UPDATE $nombre_tabla SET $cadena_modificacion WHERE $cadena_id";
+            $consulta = "UPDATE $nombre_tabla SET $cadena_modificacion WHERE id = " . $datos['id'];
 
             return $consulta;
         }

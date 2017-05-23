@@ -23,7 +23,25 @@ othersButton.addEventListener('click', function () {
 	listStickers('others')
 })
 
+const searchBar = document.getElementById('search-bar')
+searchBar.addEventListener('input', filter)
+
+const content = document.getElementById("content")
+
+var addButton = document.getElementById('add')
+addButton.addEventListener('click', function () {
+    var w = window.open("", "", "width=650,height=650")
+    w.location.href = 'add-sticker.html'
+    w.focus()
+})
+
+var stickersArray = []
+
+var sendButton = document.getElementById("send")
+sendButton.addEventListener('click', sendMail)
+
 function listStickers(category){
+    console.log(document.cookie)
 	if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest()
@@ -33,21 +51,40 @@ function listStickers(category){
     }
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
+            console.warn(this.responseText)
         	displayStickers(this.responseText)
+            stickersArray = JSON.parse(this.responseText)
         }
     }
     xmlhttp.open("GET","adminCatalog/adminCatalog.php?category=" + category,true)
     xmlhttp.send()
 }
 
+function filter(){
+    content.innerHTML = ""
+    var text = searchBar.value
+    stickersArray.forEach( sticker => {
+        var stickerTitle = sticker.title
+        if (stickerTitle.indexOf(text) !== -1){
+            var htmlSticker = 
+            `<div id="${sticker.id}" class="sticker" style="cursor: pointer;" onclick="obtainDetails(this.id)">` +
+                `<img src="${sticker.imageUrl}">` +
+                `<span class="title">${sticker.title}</span>` +
+                `<span class="price">\$${sticker.price}</span>` +
+            `</div>`
+
+            content.innerHTML += htmlSticker
+        }
+    })
+}
+
 function displayStickers(stickers){
 	stickers = JSON.parse(stickers)
-	const content = document.getElementById("content")
 	content.innerHTML = ""
 	stickers.forEach( sticker => {
       var htmlSticker = 
-        `<div id="${sticker.title}" class="sticker" onclick="obtainDetails(this.id)">` +
-          `<img src="../stickersImages/foca.jpg">` +
+        `<div id="${sticker.id}" class="sticker" style="cursor: pointer;" onclick="obtainDetails(this.id)">` +
+          `<img src="${sticker.imageUrl}">` +
           `<span class="title">${sticker.title}</span>` +
           `<span class="price">\$${sticker.price}</span>` +
         `</div>`
@@ -56,7 +93,7 @@ function displayStickers(stickers){
     })
 }
 
-function obtainDetails(stickerTitle){
+function obtainDetails(id){
 	var popupWindow = openWindow()
 	if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -67,66 +104,58 @@ function obtainDetails(stickerTitle){
     }
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-        	console.warn(this.responseText)
         	var sticker = (JSON.parse(this.responseText))[0]
+            removeStickerStorage()
+            saveStickerStorage(sticker)
         	popupWindow.document.open()
 			var content = 
 				`<HTML>
-					<HEAD><TITLE></TITLE></HEAD>
+					<HEAD><TITLE></TITLE>
+                          <link rel="stylesheet" href="css/sticker.css">
+                    </HEAD>
 					<BODY style="background-color: #E8EAF6;">
-						<div style="display: inline-block;float: left">
-							<img style="margin-top: 18px;height: 300px;max-width: 300px;" src="../stickersImages/foca.jpg">
-						</div>
-						<div style="display: inline-block;">
-							<label style="width: 70px; margin-left: 50px;">${sticker['title']}</label>
-							<br>
-							<input style="width: 70px; margin-top: 80px; margin-left: 50px;" type="button" value="Comprar"/>
-							<br>
-							<input style="width: 70px; margin-top: 20px; margin-left: 50px;" type="button" value="Modificar"/>
-							<br>
-							<input style="width: 70px; margin-top: 21px; margin-left: 50px;" type="button" value="Eliminar"/>
-							<br>
-							<input style="width: 70px; margin-top: 20px; margin-left: 50px;" type="button" value="Cerrar"/>
-						</div>
+					   <script type="text/javascript">
+                        window.addEventListener("load", function () {
+                            window.location.href = 'sticker.php'
+                        })
+                       </script>
 					</BODY>
 				</HTML>`
 			popupWindow.document.writeln(content)
 			popupWindow.document.close()
         }
     }
-    xmlhttp.open("GET","adminCatalog/adminCatalog.php?title=" + stickerTitle,true)
+    xmlhttp.open("GET","adminCatalog/adminCatalog.php?id=" + id,true)
     xmlhttp.send()
 }
 
+function saveStickerStorage(sticker){
+    if (typeof(Storage) != "undefined"){
+        localStorage.setItem(sticker.title, JSON.stringify(sticker));
+    } else{
+    }
+}
+
+function removeStickerStorage(){
+    keys = Object.keys(localStorage);
+    longitudStorage = keys.length;
+    for (i in keys){
+        localStorage.removeItem(keys[i]);
+    }
+}
+
 function openWindow(){
-	var h = 350
-	var w = 350
+	var h = 650
+	var w = 650
 	var wLeft = window.screenLeft ? window.screenLeft : window.screenX
   	var wTop = window.screenTop ? window.screenTop : window.screenY
   	var left = wLeft + (window.innerWidth / 2) - (h / 2)
   	var top = wTop + (window.innerHeight / 2) - (w / 2)
-	var style = 'height=' + h + ',width=450px,left=' + (left-100) + ',top=' + top + ',resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=no'
+	var style = 'height=250px,width=' + (w+150) + ',left=' + left + ',top=' + (top+200) + ',resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=no'
 	var popupWindow = window.open(null,'popUpWindow', style)
 	popupWindow.focus()
 
 	return popupWindow
-}
-
-function modifySticker(sticker){
-	if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest()
-    } else {
-        // code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
-    }
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-        	
-        }
-    }
-    xmlhttp.open("PUT","adminCatalog/adminCatalog.php?title=" + stickerTitle,true)
-    xmlhttp.send()
 }
 
 function deleteSticker(stickerTitle){
@@ -143,6 +172,22 @@ function deleteSticker(stickerTitle){
         }
     }
     xmlhttp.open("DELETE","adminCatalog/adminCatalog.php?title=" + stickerTitle,true)
+    xmlhttp.send()
+}
+
+function sendMail() {
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest()
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        }
+    }
+    xmlhttp.open("GET","email.php",true)
     xmlhttp.send()
 }
 
