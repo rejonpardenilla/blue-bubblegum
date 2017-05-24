@@ -56,7 +56,7 @@ function listStickers(category){
             stickersArray = JSON.parse(this.responseText)
         }
     }
-    xmlhttp.open("GET","adminCatalog/adminCatalog.php?category=" + category,true)
+    xmlhttp.open("GET","./adminCatalog.php?category=" + category,true)
     xmlhttp.send()
 }
 
