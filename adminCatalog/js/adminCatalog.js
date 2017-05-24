@@ -1,3 +1,4 @@
+
 const logoButton = document.getElementById('logo')
 logoButton.addEventListener('click', function () {
 	listStickers('all')
@@ -66,7 +67,7 @@ function filter(){
     stickersArray.forEach( sticker => {
         var stickerTitle = sticker.title
         if (stickerTitle.indexOf(text) !== -1){
-            var htmlSticker = 
+            var htmlSticker =
             `<div id="${sticker.id}" class="sticker" style="cursor: pointer;" onclick="obtainDetails(this.id)">` +
                 `<img src="${sticker.imageUrl}">` +
                 `<span class="title">${sticker.title}</span>` +
@@ -108,7 +109,7 @@ function obtainDetails(id){
             removeStickerStorage()
             saveStickerStorage(sticker)
         	popupWindow.document.open()
-			var content = 
+			var content =
 				`<HTML>
 					<HEAD><TITLE></TITLE>
                           <link rel="stylesheet" href="css/sticker.css">
@@ -168,7 +169,7 @@ function deleteSticker(stickerTitle){
     }
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-        	
+
         }
     }
     xmlhttp.open("DELETE","adminCatalog/adminCatalog.php?title=" + stickerTitle,true)

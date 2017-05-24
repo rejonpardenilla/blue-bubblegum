@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if ( $_SESSION['BBl_tipoUsuario'] != 'admin' ){
+  # code...
+  echo "<script>window.location.href = '../index.php'</script>";
+}
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +22,7 @@
         Blue Bubblegum
       </a>
     </div>
-  
+
     <div id="categories-menu">
       <ul>
         <li><a id="technology" href="#">TECNOLOGIA</a></li>
@@ -23,9 +33,7 @@
     </div>
 
     <div id="login-menu">
-      <a href="login">
-        Login
-      </a>
+      <a href="../src/LogOut.php">Cerrar Sesión</a>
     </div>
 
     <div id="add">
@@ -38,7 +46,7 @@
       <input id="search-bar" type="text" name="search" placeholder="Search..">
     </div>
   <section id="content">
-    
+
   </section>
 
    <footer>

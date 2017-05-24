@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+//print_r($_SESSION);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +20,7 @@
         Blue Bubblegum
       </a>
     </div>
-  
+
     <div id="categories-menu">
       <ul>
         <li><a href="#">TECNOLOGIA</a></li>
@@ -24,11 +30,21 @@
       </ul>
     </div>
 
-    <div id="login-menu">
-      <a href="../login">
-        login
-      </a>
-    </div>
+    <?php if( isset( $_SESSION[ 'BBL_email' ] ) ) { ?>
+      <div id="info-user">
+        <p>
+          <?php echo $_SESSION[ 'BBL_email' ]; ?>
+        </p>
+        <a href="../src/LogOut.php">Cerrar Sesión</a>
+      </div>
+    <?php } else { ?>
+      <div id="login-menu">
+        <a href="../login">
+          login
+        </a>
+      </div>
+    <?php } ?>
+
 
     <div id="cart">
       <a href="#">
@@ -44,7 +60,7 @@
       <span class="title">Bored Seal</span>
       <span class="price">$2.53</span>
     </div>
-    
+
     <div class="sticker" id="1">
       <img src="https://ih1.redbubble.net/image.353367608.9428/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.lite-1u2.jpg" alt="sticker">
       <span class="title">Smart Unicorn</span>
@@ -84,9 +100,9 @@
 
 
 
-    
 
-    
+
+
   </section>
 
   <footer>
