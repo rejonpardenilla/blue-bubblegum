@@ -12,6 +12,7 @@
   </section>
 
   <section id="content">
+    <!-- 
     <div class="sticker" id="0">
       <img src="https://ih0.redbubble.net/image.357542102.4834/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.lite-1u2.jpg" alt="sticker">
       <span class="title">Bored Seal</span>
@@ -32,6 +33,7 @@
       <span class="delete">X</span>
       <span class="price">$2.95</span>
     </div>
+     -->
   </section>
 
   <section id="actions">
@@ -41,7 +43,14 @@
   </section>
 
   <script src="../utils/StickerManager.js"></script>
-  <script src="../utils/ShoppingCart.js"></script>
+  <script src="../utils/Cookies.js"></script>
   <script src="js/cart.js"></script>
+  <script>
+    let sm = StickerManager()
+    let cookies = Cookies()
+
+    let stickers = cookies.getJSON('cart')
+    sm.showStickers('content', [stickers])
+  </script>
 </body>
 </html>

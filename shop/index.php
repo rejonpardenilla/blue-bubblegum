@@ -57,6 +57,7 @@
   </section>
 
   <section id="content">
+  <!-- 
     <div class="sticker" id="0">
       <img src="https://ih0.redbubble.net/image.357542102.4834/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.lite-1u2.jpg" alt="sticker">
       <span class="title">Bored Seal</span>
@@ -106,7 +107,7 @@
       <span class="add-to-cart">comprar</span>
     </div>
 
-
+    -->
 
 
 
@@ -124,22 +125,28 @@
 
 
   <script src="../utils/StickerManager.js"></script>
-  <script src="../utils/ShoppingCart.js"></script>
   <script src="../utils/Cookies.js"></script>
-  <script src="../utils/StickersDB.js"></script>
   <script src="js/shop.js"></script>
 
   <script>
-    let stickerManager = StickerManager()
-    let stickers = stickerManager.getAllStickers()
+    let sm = StickerManager()
     let cookies = Cookies()
+
+    let stickers = sm.getAllStickers()
+    sm.showStickers('content', stickers)
 
     let domStickers = document.getElementsByClassName('sticker')
     for (let i = 0; i < domStickers.length; i++) {
       domStickers[i].addEventListener('click', event => {
         // Por cada sticker, al hacerle click, haz lo siguiente
         
-        let detailsWindow = window.open("sticker.php", "", "width=650,height=650")
+        let stickerId = domStickers[i].id
+
+        let currentSticker = sm.getStickersById(stickerId)[0]
+
+        cookies.setJSON('stickerDetailed', currentSticker)
+
+        window.open('sticker.php', '', 'width=650,height=650')
 
       })
     }
@@ -147,20 +154,18 @@
     let addToCart = document.getElementsByClassName('add-to-cart')
     for (let i = 0; i < addToCart.length; i++) {
       addToCart[i].addEventListener('click', event => {
-        /*
-        let id = addToCart[i].id
-        let stickersById = stickerManager.getStickersById(id)
-        stickers.forEach(element => cookies.setJSON('cart', element))
-        */
+        event.stopPropagation()
         
+        let stickerId = addToCart[i].parentElement.id
+
+        let currentSticker = sm.getStickersById(stickerId)[0]
+
+        cookies.setJSON('cart', currentSticker)
+
+        window.open('cart.php', '', 'width=650,height=650')
+
       })
     }
-
-    let db = StickersDB()
-
-    let st = db.getStickers()
-    console.log(st)
-
     
   </script>
 </body>

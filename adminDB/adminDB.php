@@ -5,7 +5,7 @@
 	class AdminDB {
 		const BASE_DATOS = 'mysql:host=localhost; dbname=tienda_stickers';
         const USUARIO = 'root';
-        const CONTRASENA = '';
+        const CONTRASENA = 'drp231095';
         private $conexion;
         private $generador_consultas;
 

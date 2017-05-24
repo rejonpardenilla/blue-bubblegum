@@ -6,7 +6,6 @@
 
 	switch( $request_type ) {
 		case 'GET':
-			echo '<script> console.log("AAAAAAAA") </script>'
 			if (isset($_GET['category'])) {
 				$category = $_GET['category'];
 				switch($category){
