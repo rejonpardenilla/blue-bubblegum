@@ -125,19 +125,43 @@
 
   <script src="../utils/StickerManager.js"></script>
   <script src="../utils/ShoppingCart.js"></script>
+  <script src="../utils/Cookies.js"></script>
+  <script src="../utils/StickersDB.js"></script>
   <script src="js/shop.js"></script>
 
   <script>
+    let stickerManager = StickerManager()
+    let stickers = stickerManager.getAllStickers()
+    let cookies = Cookies()
 
-    let stickers = document.getElementsByClassName('sticker')
-    for (let i = 0; i < stickers.length; i++) {
-      stickers[i].addEventListener('click', event => {
+    let domStickers = document.getElementsByClassName('sticker')
+    for (let i = 0; i < domStickers.length; i++) {
+      domStickers[i].addEventListener('click', event => {
         // Por cada sticker, al hacerle click, haz lo siguiente
         
         let detailsWindow = window.open("sticker.php", "", "width=650,height=650")
 
       })
     }
+
+    let addToCart = document.getElementsByClassName('add-to-cart')
+    for (let i = 0; i < addToCart.length; i++) {
+      addToCart[i].addEventListener('click', event => {
+        /*
+        let id = addToCart[i].id
+        let stickersById = stickerManager.getStickersById(id)
+        stickers.forEach(element => cookies.setJSON('cart', element))
+        */
+        
+      })
+    }
+
+    let db = StickersDB()
+
+    let st = db.getStickers()
+    console.log(st)
+
+    
   </script>
 </body>
 </html>

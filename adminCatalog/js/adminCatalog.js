@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const logoButton = document.getElementById('logo')
 logoButton.addEventListener('click', function () {
 	listStickers('all')
@@ -42,7 +42,6 @@ var sendButton = document.getElementById("send")
 sendButton.addEventListener('click', sendMail)
 
 function listStickers(category){
-    console.log(document.cookie)
 	if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest()

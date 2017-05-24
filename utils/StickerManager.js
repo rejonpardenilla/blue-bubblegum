@@ -27,6 +27,7 @@ let StickerManager = () => {
     
     let stickers = [
       {
+        id: '0',
         title: 'Bored Seal',
         price: 2.53,
         category: 'other',
@@ -34,6 +35,7 @@ let StickerManager = () => {
         imageUrl: 'https://ih0.redbubble.net/image.357542102.4834/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.lite-1u2.jpg'
       },
       {
+        id: '1',
         title: 'Smart Unicorn',
         price: 3.80,
         category: 'technology',
@@ -72,6 +74,8 @@ let StickerManager = () => {
   }
 
   obj.getStickersByCategory = category => obj.getAllStickers().filter(x => x.category === category)
+
+  obj.getStickersById = id => obj.getAllStickers().filter(x => x.id === id)
 
 
 
