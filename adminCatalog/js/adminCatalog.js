@@ -57,7 +57,7 @@ function listStickers(category){
             stickersArray = JSON.parse(this.responseText)
         }
     }
-    xmlhttp.open("GET","adminCatalog/adminCatalog.php?category=" + category,true)
+    xmlhttp.open("GET","adminCatalog.php?category=" + category,true)
     xmlhttp.send()
 }
 
@@ -83,7 +83,7 @@ function displayStickers(stickers){
 	stickers = JSON.parse(stickers)
 	content.innerHTML = ""
 	stickers.forEach( sticker => {
-      var htmlSticker = 
+      var htmlSticker =
         `<div id="${sticker.id}" class="sticker" style="cursor: pointer;" onclick="obtainDetails(this.id)">` +
           `<img src="${sticker.imageUrl}">` +
           `<span class="title">${sticker.title}</span>` +
@@ -127,7 +127,7 @@ function obtainDetails(id){
 			popupWindow.document.close()
         }
     }
-    xmlhttp.open("GET","adminCatalog/adminCatalog.php?id=" + id,true)
+    xmlhttp.open("GET","adminCatalog.php?id=" + id,true)
     xmlhttp.send()
 }
 

@@ -28,7 +28,8 @@ function listStickers(category){
         if (this.readyState == 4 && this.status == 200) {
             console.warn(this.responseText)
         	array = this.responseText
-        	console.log(array)
+        	console.log(JSON.parse(array))
+          sm.showStickers('content', JSON.parse(array))
         }
     }
     xmlhttp.open("GET","../adminCatalog/adminCatalog.php?category=" + category,true)
