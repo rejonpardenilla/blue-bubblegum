@@ -11,8 +11,7 @@
       <img id="image" alt="sticker">
       <span class="title" id="title"></span>
       <span class="delete" id="delete"><a href="#">Eliminar</a></span>
-      <span class="edit" id="edit"><a href="edit-sticker">Editar</a></span>
-      <span class="buy" id="buy"><a href="#">Comprar</a></span>
+      <span class="edit" id="edit"><a href="../shop/edit-sticker.php">Editar</a></span>
       <span class="price" id="price"></span>
       <span class="units" id="units"></span>
     </div>

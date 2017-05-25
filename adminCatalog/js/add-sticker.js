@@ -22,7 +22,9 @@ function evaluate() {
 			evalMsg.innerHTML = ""
 			evalMsg.innerHTML = "Precio debe contener valores positivos mayores a 0. La cantidad de unidades debe ser un valor positivo."
 		} else {
-			addNewSticker()
+			console.log(inputTitle.value.length)
+			if (inputTitle.value.length > 15) evalMsg.innerHTML = "El título no puede ser mayor a 15 letras."
+			else addNewSticker()
 		}
 	} else {
 		evalMsg.innerHTML = ""

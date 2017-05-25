@@ -42,7 +42,6 @@ section#content {
   margin-bottom: 10px;
   padding: 10px;
   height: 80px;
-  cursor: pointer;
 }
 
 .sticker img {
@@ -55,7 +54,7 @@ section#content {
 
 .sticker span {
   font-size: 16px;
-  margin: 24px;
+  margin: 15px;
 }
 
 .sticker .title {
@@ -65,7 +64,8 @@ section#content {
 }
 
 .sticker .price,
-.delete {
+.delete,
+.add-to-cart {
   float: right;
   color: #3F51B5;
   font-weight: bold;
@@ -86,4 +86,27 @@ section#actions {
   font-weight: bold;
   text-align: center;
   cursor: pointer;
+}
+
+#delCar {
+  margin-top: -50px;
+  float: left;
+  padding: 12px;
+  width: 100%;
+  border: 2px solid #3F51B5;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.quantity {
+  display: block;
+}
+
+#prec {
+  margin-left: 35px;
+  color: #3F51B5;
+  font-weight: bold;
+  font-size: 40px;
 }

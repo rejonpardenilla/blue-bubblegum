@@ -6,6 +6,7 @@
 		const BASE_DATOS = 'mysql:host=localhost; dbname=tienda_stickers';
         const USUARIO = 'root';
         const CONTRASENA = '';
+
         private $conexion;
         private $generador_consultas;
 
@@ -40,7 +41,7 @@
             }
                 $resultado = $this->conexion->query( $consulta );
                 $datos_obtenidos = $resultado->fetchAll();
-                
+
             print_r ( json_encode( $datos_obtenidos ) );
         }
 

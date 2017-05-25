@@ -1,0 +1,80 @@
+const buyButton = document.getElementById("buy")
+buyButton.addEventListener("click", buySticker)
+
+const msg = document.getElementById("msg")
+
+var id
+
+function showInformation(){
+	var title = document.getElementById("title")
+	var price = document.getElementById("price")
+	var category = document.getElementById("category")
+	var description = document.getElementById("description")
+	var image = document.getElementById("image")
+	var keys = Object.keys(localStorage);
+	for (i in keys){
+		sticker = JSON.parse(localStorage.getItem(keys[i]));
+		title.innerHTML = sticker.title
+		price.innerHTML = 'Precio: $' + sticker.price
+		units.innerHTML = 'Unidades restantes: ' + sticker.units
+		category.innerHTML = "Categoría: " + sticker.category
+		description.innerHTML = sticker.description
+		image.src = sticker.imageUrl
+		id = sticker.id
+	}
+}
+
+function buySticker(){
+	createCookie("sticker_cookies", id)
+    msg.innerHTML = "Agregado al carrito."
+	//window.close()
+}
+
+function createCookie(name, value) {
+    var expires = '';
+    date = new Date();
+    days = 7;
+
+    if (days) {
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = '; expires=' + date.toGMTString();
+    }
+    var x = document.cookie;
+    var sticker_cookies = readCookie("sticker_cookies");
+    cosa = JSON.parse(sticker_cookies);
+    if(cosa == null){
+        cosa = {};
+        cosa[value] = 1;
+        document.cookie = name + '=' + JSON.stringify(cosa) + expires + '; path=/';
+    } else {
+        if(value in cosa){
+            cosa[value] = cosa[value] + 1;
+        } else {
+            cosa[value] = 1;
+        }
+        document.cookie = name + '=' + JSON.stringify(cosa) + expires + '; path=/';
+    }
+    console.log(document.cookie)
+}
+
+function readCookie(name) {
+    var cookies = document.cookie.split(';'),
+        length = cookies.length,
+        i,
+        cookie,
+        nameEQ = name + '=';
+    for (i = 0; i < length; i += 1) {
+        cookie = cookies[i];
+        while (cookie.charAt(0) === ' ') {
+            cookie = cookie.substring(1, cookie.length);
+        }
+        if (cookie.indexOf(nameEQ) === 0) {
+            return cookie.substring(nameEQ.length, cookie.length);
+        }
+    }
+    return null;
+}
+
+window.addEventListener("load", function(){
+	showInformation()
+})
