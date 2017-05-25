@@ -44,10 +44,17 @@
 						break;
 				}
 			} else {
-				$id = [
-					'id' => $_GET['id']
-				];
-				$product = $adminDB->obtener_informacion('products', $id);
+				if(isset($_GET['id'])){
+					$id = [
+						'id' => $_GET['id']
+					];
+					$product = $adminDB->obtener_informacion('products', $id);
+				} else {
+					$id = [
+						'email' => $_GET['email']
+					];
+					$product = $adminDB->obtener_informacion('users', $id);
+				}
 			}
 			break;
 

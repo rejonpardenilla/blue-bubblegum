@@ -105,7 +105,8 @@ function obtainDetails(id){
     }
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-        	var sticker = (JSON.parse(this.responseText))[0]
+        	var sticker = JSON.parse(this.responseText)[0]
+            console.log(sticker)
             removeStickerStorage()
             saveStickerStorage(sticker)
         	popupWindow.document.open()
@@ -132,6 +133,7 @@ function obtainDetails(id){
 
 function saveStickerStorage(sticker){
     if (typeof(Storage) != "undefined"){
+        console.log(sticker.title)
         localStorage.setItem(sticker.title, JSON.stringify(sticker));
     } else{
     }
@@ -184,7 +186,7 @@ function sendMail() {
         // code for IE6, IE5
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
     }
-xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
         }
     }

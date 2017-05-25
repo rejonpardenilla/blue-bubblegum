@@ -4,7 +4,7 @@
  *
  */
 
-include ( 'utils/AdminDB.php' );
+include ( '../adminDB/adminDB.php' );
 
 class LoginUser {
 
@@ -13,7 +13,6 @@ class LoginUser {
   function __construct() {
     # code...
     $this->adminDB = new AdminDB();
-    session_start();
   }
 
   public function login( $userData ) {
@@ -22,6 +21,7 @@ class LoginUser {
 
     if ($userValid) {
       # code...
+      session_start();
       $_SESSION[ 'BBL_email' ] = $userData[ 'email' ];
       $_SESSION[ 'BBL_password' ] = $userData[ 'password' ];
       //$_SESSION[ 'BBl_tipoUsuario' ] = $userData[ 'tipo' ];
@@ -36,23 +36,32 @@ class LoginUser {
   }
 
   private function verifyUser( $userData ) {
-    $condition = "email = '" .$userData[ 'email' ] . "' AND password= '" .$userData[ 'password' ]. "'";
+    $condition = [
+      "email" => $userData['email'],
+      "password" => $userData['password']
+    ];
 
-    $response = $this->adminDB->obtener_elemento( 'users', $condition );
-
-    $userFounded = sizeof( $response );
+    $response = $this->adminDB->obtener_informacion( 'users', $condition );
     $userValid = false;
 
-    if ($userFounded > 0) {
+    if ($response == null) {
       # code...
       $userValid = true;
-      $_SESSION[ 'BBl_tipoUsuario' ] = $response[0]['tipo'];
+      $_SESSION[ 'BBl_tipoUsuario' ] = $response['tipo'];
     } else {
       # code...
-      $userFounded = false;
+      $userValid = false;
     }
 
     return $userValid;
+  }
+ 
+  function obtain($userData){
+    $res = $this->adminDB->obtener_info('users', $userData);
+    session_start();
+    $_SESSION[ 'BBL_email' ] = $userData[ 'email' ];
+    $_SESSION[ 'BBL_password' ] = $userData[ 'password' ];
+    $_SESSION[ 'BBl_tipoUsuario' ] = $res[0][4];
   }
 }
 
@@ -66,8 +75,9 @@ function Main() {
                       'password' => $userPassword );
 
   $loginUser = new LoginUser();
-  $loginUser->login( $userData );
+  $loginUser->obtain( $userData );
 }
+
 
 Main()
 

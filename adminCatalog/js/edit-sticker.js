@@ -55,7 +55,7 @@ function modifySticker(){
 			}
 				saveStickerStorage(st)
 				wnd = window.opener
-				wnd.location.href = 'index.html'
+				wnd.location.href = 'index.php'
 			    window.location.href = 'sticker.php'
 			}
 		}

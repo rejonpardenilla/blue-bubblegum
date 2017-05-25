@@ -6,23 +6,10 @@ const signupButton = document.getElementById('signup-button')
 
 signupButton.addEventListener('click', () => {
   let correctdata = validate()
-
   if(correctdata) {
-    let userName = fnameField.value + ' ' + lnameField.value
-    let userEmail = emailField.value
-    let userPassword = passwordField.value
-
-    let userData = { name: userName, email: userEmail, password: userPassword }
-
-    sendData( userData, ( data ) => {
-
-      if ( data.complete ) {
-        window.location.href  = '../index.php'
-      }
-    }  )
-
-    //window.location.href  = '../index.php'
+    let user = obtainUser(emailField.value)
   }
+
 })
 
 passwordField.addEventListener('keyup', event => {
@@ -81,16 +68,40 @@ function validate () {
   return true
 }
 
-function sendData( userData, callback ) {
-
+function sendData( userData) {
   let xhttp = new XMLHttpRequest()
 
   xhttp.open( 'POST', '../src/RegisterUser.php' )
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-  xhttp.send( JSON.stringify( userData ) )
+  xhttp.send( JSON.stringify(userData) )
   xhttp.onload = () => {
-    console.log( xhttp.response )
-    callback( JSON.parse( xhttp.response ) )
+    console.log(xhttp.response)
+    window.location.href = '../index.php'
+  }
+}
 
+function obtainUser(email) {
+  let xmlhttp = new XMLHttpRequest()
+
+  xmlhttp.open( 'GET', '../adminCatalog/adminCatalog.php?email=' + email )
+  xmlhttp.send()
+  xmlhttp.onload = () => {
+    console.log( xmlhttp.response )
+    var resp = JSON.parse(xmlhttp.response)
+    console.log(resp.length)
+    if (resp.length == 0){
+      let userName = fnameField.value + ' ' + lnameField.value
+      let userEmail = emailField.value
+      let userPassword = passwordField.value
+      let userData = {
+        "name": userName, 
+        "email": userEmail, 
+        "password": userPassword
+      }
+      sendData( userData )
+    } else {
+      dataError = document.getElementById("data-error")
+      dataError.innerHTML = 'Correo utilizado.'
+    }
   }
 }

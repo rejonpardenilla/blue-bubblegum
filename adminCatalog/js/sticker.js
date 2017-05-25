@@ -35,7 +35,7 @@ function deleteSticker(){
 
 		removeStickerStorage()
 		wnd = window.opener
-		wnd.location.href = 'index.html'
+		wnd.location.href = 'index.php'
 		window.close()
 	}
 }
