@@ -13,9 +13,8 @@ loginButton.addEventListener('click', () => {
     let userData = { email: userEmail, password: userPassword }
 
     sendData( userData, ( data ) => {
-      if (data.complete) {
+      if (data.length == 0) {
         window.location.href  = '../index.php'
-
       } else {
         dataError.innerHTML = 'Usuario y/o Contraseña Invalidos.'
       }
@@ -64,7 +63,7 @@ function sendData( userData, callback ) {
   xhttp.send( JSON.stringify( userData ) )
   xhttp.onload = () => {
     console.log( xhttp.response )
-    callback( JSON.parse( xhttp.response ) )
-
+    callback( xhttp.response )
+    window.location.href = '../adminCatalog/index.php'
   }
 }

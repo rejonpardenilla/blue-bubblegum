@@ -58,14 +58,8 @@
             return $consulta;
         }
 
-<<<<<<< HEAD:adminDB/generador_consultas.php
         public function obtener_consulta_especifica( $nombre_tabla, $id ) {
             $cadena_cat = $this->obtener_cadena_id( $id, count( $id ) );
-=======
-        public function obtener_consulta_categoria( $nombre_tabla, $categorias ) {
-            $cadena_cat = $this->obtener_cadena_categoria( $categorias, count( $categorias ) );
->>>>>>> 5339cc2c6c849c05a69cacbf1a4ed7879f493574:adminDB/generador_consultas.php
-
             $consulta = "SELECT * FROM $nombre_tabla WHERE $cadena_cat";
 
             return $consulta;

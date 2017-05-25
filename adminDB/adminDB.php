@@ -44,6 +44,17 @@
             print_r ( json_encode( $datos_obtenidos ) );
         }
 
+        public function obtener_info( $nombre_tabla, $id){
+            if( $id == null ) {
+                $consulta = $this->generador_consultas->obtener_consulta_lista( $nombre_tabla );
+            } else {
+                $consulta = $this->generador_consultas->obtener_consulta_especifica( $nombre_tabla, $id );
+            }
+                $resultado = $this->conexion->query( $consulta );
+                $datos_obtenidos = $resultado->fetchAll();
+            return $datos_obtenidos;
+        }
+
         public function modificar( $nombre_tabla, $datos, $num_ids) {
             $consulta = $this->generador_consultas->obtener_consulta_modificacion( $nombre_tabla, $datos, $num_ids );
             $resultado = $this->conexion->query( $consulta );

@@ -1,12 +1,11 @@
 <?php
 session_start();
-
 if ( $_SESSION['BBl_tipoUsuario'] != 'admin' ){
   # code...
   echo "<script>window.location.href = '../index.php'</script>";
 }
 
- ?>
+?>
 
 <!DOCTYPE html>
 <html>
