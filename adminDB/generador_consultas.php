@@ -1,5 +1,5 @@
 <?php
-    
+
     class Generador_consultas {
 
         function __construct() {
@@ -36,7 +36,7 @@
                 } else {
                     $cadena_modificacion = "$cadena_modificacion, $atributo = '$valor'";
                 }
-            } //foreach    
+            } //foreach
             $cadena_id = $this->obtener_cadena_id( $datos, $num_ids );
 
             $consulta = "UPDATE $nombre_tabla SET $cadena_modificacion WHERE id = " . $datos['id'];
@@ -80,7 +80,7 @@
                     break;
                 } //if
             } //foreach
-            
+
             return $cadena_cat;
         }
     }

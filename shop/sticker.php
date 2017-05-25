@@ -7,6 +7,7 @@
 </head>
 <body>
   <section id="content">
+    <!-- 
     <div class="sticker" id="0">
       <img src="https://ih0.redbubble.net/image.357542102.4834/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.lite-1u2.jpg" alt="sticker">
       <span class="title">Bored Seal</span>
@@ -19,13 +20,44 @@
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur nemo quia odit tempore, ipsa adipisci perferendis. Incidunt architecto numquam quidem consequatur, amet, praesentium provident illum autem, rem blanditiis cupiditate officiis.
       </span>
     </div>
+     -->
   </section>
+
+  <script src="../utils/StickerManager.js"></script>
+  <script src="../utils/Cookies.js"></script>
+
   <script>
+    window.onload = () => {
+      let sm = StickerManager()
+      let cookies = Cookies()
+
+      let s = cookies.getJSON('stickerDetailed')
+      console.log(s)
+
+      let stickerToBePrinted = `<div class="sticker" id="${s.id}">
+                                  <img src="${s.imageUrl}" alt="sticker">
+                                  <span class="title">${s.title}</span>
+                                  <span class="delete">X</span>
+                                  <span class="edit"><a href="#">editar</a></span> 
+                                  <span class="price">\$${s.price}</span>
+                                </div>
+                                <div class="description">
+                                  <span>
+                                    ${s.description}
+                                  </span>
+                                </div>`
+
+      document.getElementById('content').innerHTML = stickerToBePrinted
+    }
+/*
     document
       .getElementsByClassName('edit')[0]
       .addEventListener('click', event => {
         window.location.href = 'edit-sticker.php';
       })
+
+*/
+
   </script>
 </body>
 </html>

@@ -42,7 +42,6 @@ var sendButton = document.getElementById("send")
 sendButton.addEventListener('click', sendMail)
 
 function listStickers(category){
-    console.log(document.cookie)
 	if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest()
@@ -57,7 +56,11 @@ function listStickers(category){
             stickersArray = JSON.parse(this.responseText)
         }
     }
+<<<<<<< HEAD
     xmlhttp.open("GET","adminCatalog.php?category=" + category,true)
+=======
+    xmlhttp.open("GET","./adminCatalog.php?category=" + category,true)
+>>>>>>> 5ea1fb356390eb51cb69c3febe05fc88c51fd609
     xmlhttp.send()
 }
 
