@@ -65,7 +65,8 @@ section#content {
 }
 
 .sticker .price,
-.delete {
+.delete,
+.add-to-cart {
   float: right;
   color: #3F51B5;
   font-weight: bold;

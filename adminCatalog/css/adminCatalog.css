@@ -112,6 +112,23 @@ header {
   color: inherit;
 }
 
+#search-bar {
+  float: left;
+  width: 100%;
+  margin-top: 100px;
+  padding-right: 240px;
+  padding-left: 240px;
+}
+
+#search input {
+  padding: 24px;
+  padding-left: 36px;
+  width: 100%;
+  height: 36px;
+  font-size: 36px;
+  text-align: center;
+}
+
 
 
 

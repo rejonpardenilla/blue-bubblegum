@@ -96,6 +96,11 @@ header {
   margin-right: 20px;
 }
 
+#cart span {
+  color: #E8EAF6;
+  font-size: 36px;
+}
+
 
 /* Navbar 4: Login*/
 #login-menu, #info-user {
@@ -123,13 +128,30 @@ header {
 }
 
 
+/* Search section */
+#search-bar {
+  float: left;
+  width: 100%;
+  margin-top: 100px;
+  padding-right: 240px;
+  padding-left: 240px;
+}
+
+#search input {
+  padding: 24px;
+  padding-left: 36px;
+  width: 100%;
+  height: 36px;
+  font-size: 36px;
+  text-align: center;
+}
+
 
 
 /* CONTENT STYLES */
 section#content {
   width: 100%;
   float: left;
-  padding-top: 100px;
   padding-right: 100px;
   padding-left: 100px;
 }
@@ -162,10 +184,15 @@ section#content {
   font-size: 16px;
 }
 
-.sticker .price {
+.sticker .price,
+.add-to-cart {
   color: #3F51B5;
   font-weight: bold;
   float: right;
+}
+
+.add-to-cart {
+  margin-right: 12px;
 }
 
 
@@ -178,4 +205,29 @@ footer {
   margin-top: 40px;
   background-color: #212121;
   float: left;
+}
+
+footer #comments {
+  width: 100%;
+  padding: 120px;
+  padding-top: 12px;
+  padding-bottom: 0;
+  color: #E8EAF6;
+}
+
+footer textarea {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 12px;
+}
+
+footer a,
+footer a:hover,
+footer a:visited {
+  float: left;
+  color: #E8EAF6;
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  border: 2px solid #E8EAF6;
 }

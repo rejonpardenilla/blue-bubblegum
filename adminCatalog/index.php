@@ -41,9 +41,11 @@ if ( $_SESSION['BBl_tipoUsuario'] != 'admin' ){
       </a>
     </div>
   </header>
-    <div>
-      <input id="search-bar" type="text" name="search" placeholder="Search..">
+  <section id="search-bar">
+    <div id="search">
+      <input id="sb" type="text" placeholder="Buscar">
     </div>
+  </section>
   <section id="content">
 
   </section>

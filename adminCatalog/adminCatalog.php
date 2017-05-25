@@ -5,7 +5,6 @@
 	$request_type = $_SERVER['REQUEST_METHOD'];
 
 	switch( $request_type ) {
-
 		case 'GET':
 			if (isset($_GET['category'])) {
 				$category = $_GET['category'];

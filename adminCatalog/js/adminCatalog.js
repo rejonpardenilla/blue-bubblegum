@@ -24,7 +24,7 @@ othersButton.addEventListener('click', function () {
 	listStickers('others')
 })
 
-const searchBar = document.getElementById('search-bar')
+const searchBar = document.getElementById('sb')
 searchBar.addEventListener('input', filter)
 
 const content = document.getElementById("content")
@@ -42,7 +42,6 @@ var sendButton = document.getElementById("send")
 sendButton.addEventListener('click', sendMail)
 
 function listStickers(category){
-    console.log(document.cookie)
 	if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest()
@@ -57,7 +56,9 @@ function listStickers(category){
             stickersArray = JSON.parse(this.responseText)
         }
     }
-    xmlhttp.open("GET","adminCatalog/adminCatalog.php?category=" + category,true)
+
+    xmlhttp.open("GET","adminCatalog.php?category=" + category,true)
+
     xmlhttp.send()
 }
 
@@ -83,7 +84,7 @@ function displayStickers(stickers){
 	stickers = JSON.parse(stickers)
 	content.innerHTML = ""
 	stickers.forEach( sticker => {
-      var htmlSticker = 
+      var htmlSticker =
         `<div id="${sticker.id}" class="sticker" style="cursor: pointer;" onclick="obtainDetails(this.id)">` +
           `<img src="${sticker.imageUrl}">` +
           `<span class="title">${sticker.title}</span>` +
@@ -127,7 +128,7 @@ function obtainDetails(id){
 			popupWindow.document.close()
         }
     }
-    xmlhttp.open("GET","adminCatalog/adminCatalog.php?id=" + id,true)
+    xmlhttp.open("GET","adminCatalog.php?id=" + id,true)
     xmlhttp.send()
 }
 
