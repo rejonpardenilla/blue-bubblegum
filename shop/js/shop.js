@@ -35,6 +35,10 @@ othersButton.addEventListener('click', function () {
 const searchBar = document.getElementById('sb')
 searchBar.addEventListener('input', filter)
 
+const comments = document.getElementById("comment")
+var sendButton = document.getElementById("send")
+sendButton.addEventListener('click', sendMail)
+
 document.getElementById('cart').addEventListener('click', event => {
   window
     .open("", "", "width=650,height=650")
@@ -177,18 +181,33 @@ function deleteSticker(stickerTitle){
     xmlhttp.send()
 }
 
-function sendMail() {
-    com = {
-        "msg": comments.value
+function cerrarSesion() {
+    var r = confirm("¿Seguro que desea cerrar sesión?");
+    if (r == true) {
+        window.location.href = "../src/LogOut.php"
+    } else {
     }
-    var xhttp = new XMLHttpRequest()
-    xhttp.open( 'POST', 'add-sticker.php' )
-    xhttp.send( formData )
-    xhttp.onload = () => {
-        console.log( xhttp.response )
-        wnd = window.opener;
-        wnd.location.href = 'index.php'
-        window.close()
+}
+
+function sendMail() {
+    var r = confirm("¿Seguro que desea enviar su comentario?");
+    if (r == true) {
+        com = {
+            "msg": comments.value
+        }
+        console.log(comments.value)
+        var formData = new FormData()
+
+        formData.append("msg", comments.value);
+        var xhttp = new XMLHttpRequest()
+        xhttp.open( 'POST', 'http://guests.codeams.me/rechi/send-mail.php' )
+        //xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+        xhttp.send( formData )
+        xhttp.onload = () => {
+            window.location.href = 'index.php'
+        }
+        alert("Comentario enviado.");
+    } else {
     }
 }
 

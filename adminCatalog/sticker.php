@@ -10,7 +10,7 @@
     <div class="sticker">
       <img id="image" alt="sticker">
       <span class="delete" id="delete"><a href="#">Eliminar</a></span>
-      <span class="edit" id="edit"><a href="../shop/edit-sticker.php">Editar</a></span>
+      <span class="edit" id="edit"><a href="edit-sticker.php">Editar</a></span>
       <span class="price" id="price"></span>
       <span class="units" id="units"></span>
     </div>
@@ -25,6 +25,5 @@
     </div>
   </section>
   <script type="text/javascript" src="js/sticker.js"></script>
-  <script type="text/javascript" src="../utils/Cookies.js"></script>
 </body>
 </html>
