@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,15 +45,32 @@
     Precio total: $<div id="totalPrice">0</div>
   </section>
 
-  <section id="actions">
-    <div id="buy">
-      <a href="#">Comprar</a>
-    </div>
-  </section>
+  <div id="msg">
+  </div>
+
+  <?php if( isset( $_SESSION[ 'BBL_email' ] ) ) { ?>
+        <section id="actions">
+          <div id="buy" onclick="buyStickers()">
+            <a href="#">Comprar</a>
+          </div>
+        </section>
+    <?php } else { ?>
+        <section id="actions">
+          <div id="buy">
+            <a href="#" onclick="msgLogin()">Comprar</a>
+          </div>
+        </section>
+    <?php } ?>
 
   <section id="actions">
     <div id="delCar">
       <a href="#">Eliminar carrito</a>
+    </div>
+  </section>
+
+  <section id="actions">
+    <div id="cerrar">
+      <a href="#">Cerrar</a>
     </div>
   </section>
 

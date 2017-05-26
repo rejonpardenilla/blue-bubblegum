@@ -58,11 +58,17 @@ class LoginUser {
  
   function obtain($userData){
     $res = $this->adminDB->obtener_info('users', $userData);
-    session_start();
-    $_SESSION[ 'BBL_email' ] = $userData[ 'email' ];
-    $_SESSION[ 'BBL_password' ] = $userData[ 'password' ];
-    $_SESSION[ 'BBl_tipoUsuario' ] = $res[0][4];
-  }
+    if (count($res) == 0){
+
+    } else {
+      session_start();
+      $_SESSION[ 'BBL_email' ] = $userData[ 'email' ];
+      $_SESSION[ 'BBL_password' ] = $userData[ 'password' ];
+      $_SESSION[ 'BBl_tipoUsuario' ] = $res[0][4];
+      $this->adminDB->obtener_informacion('users', $userData);
+    }
+}
+
 }
 
 function Main() {

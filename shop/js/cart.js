@@ -5,8 +5,10 @@ var totalPriceDiv = document.getElementById("totalPrice")
 var delCar = document.getElementById("delCar")
 delCar.addEventListener("click", kill_cookies)
 
-var buyButton = document.getElementById("buy")
-buyButton.addEventListener("click", buyStickers)
+var cerrar = document.getElementById("cerrar")
+cerrar.addEventListener("click", cerrarCart)
+
+var msg = document.getElementById("msg")
 
 var totalPrice = 0
 
@@ -41,7 +43,27 @@ function loadStickers(){
 }
 
 function buyStickers(){
-	
+	var r = confirm("¿Confirmar compra?");
+    if (r == true) {
+    	var cookies = readCookie("sticker_cookies")
+		var xhttp = new XMLHttpRequest()
+	    xhttp.open( 'POST', 'cookies.php' )
+	    xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+	    xhttp.send( cookies )
+	    xhttp.onload = () => {
+	    	createCookie("sticker_cookies", "", -1);
+	        window.close()
+	    }
+    } else {
+    }
+}
+
+function msgLogin(){
+	msg.innerHTML = 'Necesitas iniciar sesión para poder comprar.'
+}
+
+function cerrarCart(){
+	window.location.href = close()
 }
 
 function readCookie(name) {
@@ -63,8 +85,12 @@ function readCookie(name) {
 }
 
 function kill_cookies(){
-    createCookie("sticker_cookies", "", -1);
-    window.close();
+	var r = confirm("¿Seguro que desea eliminar todos los productos del carrito?");
+    if (r == true) {
+	    createCookie("sticker_cookies", "", -1);
+	    window.close();
+    } else {
+    }
 }
 
 function createCookie(name, value, days) {

@@ -6,6 +6,7 @@ const price = document.getElementById("price")
 const category = document.getElementById("category")
 const description = document.getElementById("description")
 const units = document.getElementById("units")
+const image = document.getElementById("image")
 
 function showInformation(){
 	var keys = Object.keys(localStorage);
@@ -17,6 +18,7 @@ function showInformation(){
 		category.innerHTML = sticker.category
 		description.innerHTML = sticker.description
 		units.value = sticker.units
+		image.src = sticker.imageUrl
 		id = sticker.id
 	}
 }
@@ -30,7 +32,9 @@ function modifySticker(){
 			evalMsg.innerHTML = ""
 			evalMsg.innerHTML = "Precio debe contener valores positivos mayores a 0. La cantidad de unidades debe ser un valor positivo."
 		} else {
-			var sticker = {
+		    var r = confirm("¿Seguro que desea modificar los datos?");
+		    if (r == true) {
+		        var sticker = {
 				"title": title.value,
 				"price": price.value,
 				"category": category.value,
@@ -38,25 +42,27 @@ function modifySticker(){
 				"units": units.value,
 				"id": id,
 				"tipo": "modificar"
-			}
+				}
 
-			var xhttp = new XMLHttpRequest()
-			xhttp.open( 'POST', 'adminCatalog.php' )
-			xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-			xhttp.send( JSON.stringify( sticker ) )
-			xhttp.onload = () => {
-				removeStickerStorage()
-				var st = {
-				"title": title.value,
-				"price": price.value,
-				"category": category.value,
-				"description": description.value,
-				"units": units.value
-			}
-				saveStickerStorage(st)
-				wnd = window.opener
-				wnd.location.href = 'index.php'
-			    window.location.href = 'sticker.php'
+				var xhttp = new XMLHttpRequest()
+				xhttp.open( 'POST', 'adminCatalog.php' )
+				xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+				xhttp.send( JSON.stringify( sticker ) )
+				xhttp.onload = () => {
+					removeStickerStorage()
+					var st = {
+					"title": title.value,
+					"price": price.value,
+					"category": category.value,
+					"description": description.value,
+					"units": units.value
+					}
+					saveStickerStorage(st)
+					wnd = window.opener
+					wnd.location.href = 'index.php'
+				    window.location.href = 'sticker.php'
+		    	} 
+		    } else {
 			}
 		}
 	} else {

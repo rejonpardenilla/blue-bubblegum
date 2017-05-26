@@ -13,10 +13,11 @@ loginButton.addEventListener('click', () => {
     let userData = { email: userEmail, password: userPassword }
 
     sendData( userData, ( data ) => {
+      console.log(data.length)
       if (data.length == 0) {
-        window.location.href  = '../index.php'
-      } else {
         dataError.innerHTML = 'Usuario y/o Contraseña Invalidos.'
+      } else {
+        window.location.href  = '../index.php'
       }
     } )
   }
@@ -64,6 +65,6 @@ function sendData( userData, callback ) {
   xhttp.onload = () => {
     console.log( xhttp.response )
     callback( xhttp.response )
-    window.location.href = '../adminCatalog/index.php'
+    //window.location.href = '../adminCatalog/index.php'
   }
 }

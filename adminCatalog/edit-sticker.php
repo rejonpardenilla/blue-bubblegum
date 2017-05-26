@@ -8,7 +8,7 @@
 <body>
   <section id="content">
     <div class="sticker" id="0">
-      <img src="https://ih0.redbubble.net/image.357542102.4834/st%2Csmall%2C420x460-pad%2C420x460%2Cf8f8f8.lite-1u2.jpg" alt="sticker">
+      <img id="image" alt="sticker">
       <label>Nombre:</label>
       <input type="text" class="title" id="title" />
       <span class="delete"><a href="sticker.php">X</a></span>

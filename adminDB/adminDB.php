@@ -45,7 +45,7 @@
             print_r ( json_encode( $datos_obtenidos ) );
         }
 
-        public function obtener_info( $nombre_tabla, $id){
+        public function obtener_info( $nombre_tabla, $id ){
             if( $id == null ) {
                 $consulta = $this->generador_consultas->obtener_consulta_lista( $nombre_tabla );
             } else {
