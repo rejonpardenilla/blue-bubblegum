@@ -1,8 +1,10 @@
 <?php
 session_start();
-if ( $_SESSION['BBl_tipoUsuario'] != 'admin' ){
+if( isset( $_SESSION[ 'BBl_tipoUsuario' ] ) ){
+  if ( $_SESSION['BBl_tipoUsuario'] != 'admin' ){
   # code...
   echo "<script>window.location.href = '../index.php'</script>";
+  }
 }
 
 ?>
@@ -41,9 +43,11 @@ if ( $_SESSION['BBl_tipoUsuario'] != 'admin' ){
       </a>
     </div>
   </header>
-    <div>
-      <input id="search-bar" type="text" name="search" placeholder="Search..">
+  <section id="search-bar">
+    <div id="search">
+      <input id="sb" type="text" placeholder="Buscar">
     </div>
+  </section>
   <section id="content">
 
   </section>

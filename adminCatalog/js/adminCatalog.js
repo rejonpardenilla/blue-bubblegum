@@ -24,7 +24,7 @@ othersButton.addEventListener('click', function () {
 	listStickers('others')
 })
 
-const searchBar = document.getElementById('search-bar')
+const searchBar = document.getElementById('sb')
 searchBar.addEventListener('input', filter)
 
 const content = document.getElementById("content")
@@ -36,13 +36,13 @@ addButton.addEventListener('click', function () {
     w.focus()
 })
 
-var stickersArray = []
-
+const comments = document.getElementById("comments")
 var sendButton = document.getElementById("send")
 sendButton.addEventListener('click', sendMail)
 
+var stickersArray = []
+
 function listStickers(category){
-    console.log(document.cookie)
 	if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
         xmlhttp = new XMLHttpRequest()
@@ -57,7 +57,9 @@ function listStickers(category){
             stickersArray = JSON.parse(this.responseText)
         }
     }
-    xmlhttp.open("GET","adminCatalog/adminCatalog.php?category=" + category,true)
+
+    xmlhttp.open("GET","adminCatalog.php?category=" + category,true)
+
     xmlhttp.send()
 }
 
@@ -83,7 +85,7 @@ function displayStickers(stickers){
 	stickers = JSON.parse(stickers)
 	content.innerHTML = ""
 	stickers.forEach( sticker => {
-      var htmlSticker = 
+      var htmlSticker =
         `<div id="${sticker.id}" class="sticker" style="cursor: pointer;" onclick="obtainDetails(this.id)">` +
           `<img src="${sticker.imageUrl}">` +
           `<span class="title">${sticker.title}</span>` +
@@ -127,7 +129,7 @@ function obtainDetails(id){
 			popupWindow.document.close()
         }
     }
-    xmlhttp.open("GET","adminCatalog/adminCatalog.php?id=" + id,true)
+    xmlhttp.open("GET","adminCatalog.php?id=" + id,true)
     xmlhttp.send()
 }
 
@@ -179,19 +181,18 @@ function deleteSticker(stickerTitle){
 }
 
 function sendMail() {
-    if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest()
-    } else {
-        // code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    com = {
+        "msg": comments.value
     }
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-        }
+    var xhttp = new XMLHttpRequest()
+    xhttp.open( 'POST', 'add-sticker.php' )
+    xhttp.send( formData )
+    xhttp.onload = () => {
+        console.log( xhttp.response )
+        wnd = window.opener;
+        wnd.location.href = 'index.php'
+        window.close()
     }
-    xmlhttp.open("GET","email.php",true)
-    xmlhttp.send()
 }
 
 window.addEventListener("load", function () {

@@ -12,7 +12,6 @@ body {
   min-width: 1336px; /* Necessary evil */
   background-color: #E8EAF6;
   font-family: 'Mukta Vaani', sans-serif;
-  min-height: 100%;
 }
 
 a,
@@ -55,14 +54,14 @@ header {
 /* Navbar 2: Categories */
 #categories-menu {
   float: left;
-  margin-left: 100px;
+  margin-left: 40px;
 }
 
 #categories-menu li {
   display: inline;
   list-style-type: none;
   float: left;
-  font-size: 28px;
+  font-size: 25px;
   margin: 20px; 
   margin-top: 26px;
   margin-bottom: 26px;
@@ -80,12 +79,7 @@ header {
   color: inherit;
 }
 
-@media screen and (max-width: 1250px) { /* Temporary fix */
-  #categories-menu {
-    display: none;
-  }
-}
-
+/* Navbar 3: Cart*/
 #add {
   float: right;
   width: 40px;
@@ -112,6 +106,24 @@ header {
   color: inherit;
 }
 
+/* Search section */
+#search-bar {
+  float: left;
+  width: 100%;
+  margin-top: 100px;
+  padding-right: 240px;
+  padding-left: 240px;
+}
+
+#search input {
+  padding: 24px;
+  padding-left: 36px;
+  width: 100%;
+  height: 36px;
+  font-size: 36px;
+  text-align: center;
+}
+
 
 
 
@@ -121,7 +133,7 @@ section#content {
   float: left;
   padding-top: 10px;
   padding-right: 100px;
-  padding-left: 100px;
+  padding-left: 95px;
 }
 
 .sticker {
@@ -206,13 +218,6 @@ footer a:visited {
 
 #com {
   color: white;
-}
-
-input[type=text] {
-  margin-top: 100px;
-  margin-left: 110px;
-  width: 80%;
-  height: 40px;
 }
 
 /* When the input field gets focus, change its width to 100% */

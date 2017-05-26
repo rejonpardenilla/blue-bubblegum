@@ -4,7 +4,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: content-box;
   line-height: 1;
 }
 
@@ -28,7 +28,7 @@ h1 {
 }
 
 section#content {
-  width: 100%;
+  width: 90%;
   float: left;
   padding: 30px;
 }
@@ -43,7 +43,6 @@ section#content {
   margin-bottom: 10px;
   padding: 10px;
   height: 80px;
-  cursor: pointer;
 }
 
 .sticker img {
@@ -56,34 +55,69 @@ section#content {
 
 .sticker span {
   font-size: 16px;
-  margin: 24px;
+  margin: 24px 10px;
 }
 
-.sticker .title{
+.sticker .title,
+.price,
+.units {
   float: left;
   margin: 14px;
   font-size: 32px;
 }
 
-.sticker .price,
-.delete,
-.edit {
+.title {
+  font-size: 32px;
+}
+
+.sticker .delete,
+.edit,
+.add {
   float: right;
   color: #3F51B5;
   font-weight: bold;
 }
 
 .description {
-  margin-top: -10px;
+  margin-top: -40px;
 }
 
-textarea {
+#category {
+  font-weight: bold;
+}
+
+#description {
+  font-size: 16px;
+}
+
+textarea#description {
   width: 100%;
-  height: 60px;
+  height: 40px;
 }
 
-input.price {
-  height: 60px;
-  width: 120px;
+textarea#category {
+  width: 80%;
+  height: 15px;
+}
+
+input#price {
+  height: 40px;
+  width: 80px;
   font-size: 32px;
+}
+
+input#units {
+  height: 40px;
+  width: 80px;
+  margin: 13px 0px;
+  font-size: 32px;
+}
+
+input#title {
+  width: 100px;
+}
+
+label {
+  float: left;
+  margin: 28px 0px;
 }
