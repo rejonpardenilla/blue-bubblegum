@@ -180,6 +180,20 @@ function deleteSticker(stickerTitle){
     xmlhttp.send()
 }
 
+function logOut() {
+    var r = confirm("¿Seguro que desea cerrar sesión?");
+    if (r == true) {
+        window.location.href = "../src/LogOut.php"
+    } else {
+    }
+}
+
+function showUsers(){
+    window
+    .open("", "", "width=650,height=650")
+    .location.href = 'usersView.php'
+}
+
 function sendMail() {
     com = {
         "msg": comments.value

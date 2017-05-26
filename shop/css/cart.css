@@ -100,6 +100,18 @@ section#actions {
   cursor: pointer;
 }
 
+#cerrar {
+  margin-top: -50px;
+  float: left;
+  padding: 12px;
+  width: 100%;
+  border: 2px solid #3F51B5;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
 .quantity {
   display: block;
 }
@@ -109,4 +121,7 @@ section#actions {
   color: #3F51B5;
   font-weight: bold;
   font-size: 40px;
+}
+
+#delUser {
 }

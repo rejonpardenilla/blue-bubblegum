@@ -34,7 +34,8 @@ if( isset( $_SESSION[ 'BBl_tipoUsuario' ] ) ){
     </div>
 
     <div id="login-menu">
-      <a href="../src/LogOut.php">Cerrar Sesión</a>
+      <a href="#" onclick="showUsers()">Usuarios</a><br><br>
+      <a href="#" onclick="logOut()">Cerrar Sesión</a>
     </div>
 
     <div id="add">

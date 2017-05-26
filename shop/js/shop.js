@@ -177,6 +177,14 @@ function deleteSticker(stickerTitle){
     xmlhttp.send()
 }
 
+function cerrarSesion() {
+    var r = confirm("¿Seguro que desea cerrar sesión?");
+    if (r == true) {
+        window.location.href = "../src/LogOut.php"
+    } else {
+    }
+}
+
 function sendMail() {
     com = {
         "msg": comments.value

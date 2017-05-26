@@ -34,7 +34,7 @@ session_start();
         <p>
           <?php echo $_SESSION[ 'BBL_email' ]; ?>
         </p>
-        <a href="../src/LogOut.php">Cerrar Sesión</a>
+        <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
       </div>
     <?php } else { ?>
       <div id="login-menu">
