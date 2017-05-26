@@ -13,7 +13,7 @@ function showInformation(){
 	var image = document.getElementById("image")
 	var keys = Object.keys(localStorage);
 	for (i in keys){
-		sticker = JSON.parse(localStorage.getItem(keys[i]));
+		var sticker = JSON.parse(localStorage.getItem(keys[i]));
 		title.innerHTML = sticker.title
 		price.innerHTML = 'Precio: $' + sticker.price
 		units.innerHTML = 'Unidades restantes: ' + sticker.units
@@ -25,13 +25,39 @@ function showInformation(){
 }
 
 function addToCart(){
+    var keys = Object.keys(localStorage);
+    for (i in keys){
+        var sticker = JSON.parse(localStorage.getItem(keys[i]));
+        if (sticker.units == 0){
+            msg.innerHTML = "No hay unidades suficientes."
+        } else {
+            var cookies = JSON.parse(readCookie("sticker_cookies"))
+            if (cookies == null){
+                add()
+            } else if (cookies[sticker.id] == undefined) {
+                add()
+            } else {
+                console.log(cookies)
+                console.log(cookies[sticker.id])
+                console.log(sticker.units)
+                if (cookies[sticker.id] < sticker.units){
+                    add()
+                } else {
+                    msg.innerHTML = "No hay unidades suficientes."
+                } 
+            }
+        }
+    }
+	//window.close()
+}
+
+function add(){
     var r = confirm("¿Seguro que desea agregar el producto al carrito?");
     if (r == true) {
         createCookie("sticker_cookies", id)
         msg.innerHTML = "Agregado al carrito."
     } else {
     }
-	//window.close()
 }
 
 function createCookie(name, value) {

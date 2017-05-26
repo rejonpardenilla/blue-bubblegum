@@ -35,6 +35,10 @@ othersButton.addEventListener('click', function () {
 const searchBar = document.getElementById('sb')
 searchBar.addEventListener('input', filter)
 
+const comments = document.getElementById("comments")
+var sendButton = document.getElementById("send")
+sendButton.addEventListener('click', sendMail)
+
 document.getElementById('cart').addEventListener('click', event => {
   window
     .open("", "", "width=650,height=650")
@@ -177,18 +181,23 @@ function deleteSticker(stickerTitle){
     xmlhttp.send()
 }
 
+function cerrarSesion() {
+    var r = confirm("¿Seguro que desea cerrar sesión?");
+    if (r == true) {
+        window.location.href = "../src/LogOut.php"
+    } else {
+    }
+}
+
 function sendMail() {
     com = {
         "msg": comments.value
     }
     var xhttp = new XMLHttpRequest()
-    xhttp.open( 'POST', 'add-sticker.php' )
-    xhttp.send( formData )
+    xhttp.open( 'POST', '../adminCatalog/email.php' )
+    xhttp.send( JSON.stringify(com) )
     xhttp.onload = () => {
-        console.log( xhttp.response )
-        wnd = window.opener;
         wnd.location.href = 'index.php'
-        window.close()
     }
 }
 

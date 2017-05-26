@@ -3,9 +3,9 @@
     include_once 'generador_consultas.php';
 
 	class AdminDB {
-		const BASE_DATOS = 'mysql:host=localhost; dbname=tienda_stickers';
-        const USUARIO = 'root';
-        const CONTRASENA = '';
+		const BASE_DATOS = 'mysql:host=localhost; dbname=equipo8_';
+        const USUARIO = 'equipo8';
+        const CONTRASENA = 'equipo8';
 
         private $conexion;
         private $generador_consultas;
@@ -45,7 +45,7 @@
             print_r ( json_encode( $datos_obtenidos ) );
         }
 
-        public function obtener_info( $nombre_tabla, $id){
+        public function obtener_info( $nombre_tabla, $id ){
             if( $id == null ) {
                 $consulta = $this->generador_consultas->obtener_consulta_lista( $nombre_tabla );
             } else {

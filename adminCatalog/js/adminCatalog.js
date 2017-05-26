@@ -180,18 +180,29 @@ function deleteSticker(stickerTitle){
     xmlhttp.send()
 }
 
+function logOut() {
+    var r = confirm("¿Seguro que desea cerrar sesión?");
+    if (r == true) {
+        window.location.href = "../src/LogOut.php"
+    } else {
+    }
+}
+
+function showUsers(){
+    window
+    .open("", "", "width=650,height=650")
+    .location.href = 'usersView.php'
+}
+
 function sendMail() {
     com = {
         "msg": comments.value
     }
     var xhttp = new XMLHttpRequest()
-    xhttp.open( 'POST', 'add-sticker.php' )
-    xhttp.send( formData )
+    xhttp.open( 'POST', 'email.php' )
+    xhttp.send( JSON.stringify(com) )
     xhttp.onload = () => {
-        console.log( xhttp.response )
-        wnd = window.opener;
-        wnd.location.href = 'index.php'
-        window.close()
+        window.location.href = 'index.php'
     }
 }
 

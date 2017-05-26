@@ -34,7 +34,7 @@ session_start();
         <p>
           <?php echo $_SESSION[ 'BBL_email' ]; ?>
         </p>
-        <a href="../src/LogOut.php">Cerrar Sesión</a>
+        <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
       </div>
     <?php } else { ?>
       <div id="login-menu">
@@ -120,9 +120,9 @@ session_start();
 
   <footer>
     <div id="comments">
-      <label>¿Comentarios?</label><br>
+      <label id="com">¿Comentarios?</label><br>
       <textarea id="comment"></textarea><br>
-      <a href="#">Enviar</a>
+      <a id="send" href="#">Enviar</a>
     </div>
   </footer>
 
